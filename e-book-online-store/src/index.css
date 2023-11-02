@@ -36,7 +36,7 @@ html:focus-within {
 /* Set core body defaults */
 body {
   display: block;
-  /* min-height: 100vh; */
+  padding: 0 2rem;
   text-rendering: optimizeSpeed;
   font: normal 16px/1.5 'helvetica', serif;
   color:#0e345a
