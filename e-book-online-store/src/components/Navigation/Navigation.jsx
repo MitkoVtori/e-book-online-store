@@ -22,10 +22,10 @@ export default function Navigation() {
                     <Link to="/contacts">Контакти</Link>
                 </li>
                 <li>
-                    <Link to="/login"> <i class="fa-solid fa-circle-user"></i> Log in </Link>
+                    <Link to="/login"> <i className="fa-solid fa-circle-user"></i> Log in </Link>
                 </li>
                 <li>
-                    <Link to="/cart"> <i class="fa-solid fa-cart-shopping"></i> </Link>
+                    <Link to="/cart"> <i className="fa-solid fa-cart-shopping"></i> </Link>
                 </li>
 
             </ul>

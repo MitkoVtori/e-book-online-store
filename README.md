@@ -1,2 +1,21 @@
-# e-book-online-store
-- Testing - MitkoVtori
+## e-book-online-store
+
+
+## Инсталация
+
+1. Инсталирайте Node.js и npm (ако ги нямате инсталирани):
+ - Можете да изтеглите Node.js от [официалния уебсайт](https://nodejs.org/).
+
+2. Клонирайте репото на вашия компютър:
+ - gh repo clone MitkoVtori/e-book-online-store
+
+3. Влезте в директорията на проекта:
+ - cd e-book-online-store
+
+4. Инсталирайте зависимостите с помощта на npm:
+ - npm install
+
+5. След като сте инсталирали зависимостите, можете да стартирате проекта локално.
+ - npm run dev
+
+ Това ще стартира React Vite проекта и ще го направи достъпен на адрес http://localhost:5173/.
