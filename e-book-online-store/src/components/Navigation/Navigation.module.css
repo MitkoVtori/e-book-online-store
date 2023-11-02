@@ -1,0 +1,21 @@
+
+
+nav ul {
+    display:flex;
+   
+}
+
+nav ul li {
+    list-style: none;
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:#0e345a
+}
+
+nav ul li i {
+    font-size: 32px;
+}
