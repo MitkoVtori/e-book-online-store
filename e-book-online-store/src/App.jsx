@@ -2,26 +2,22 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
-import Navigation from './components/Navigation/Navigation';
+import Header from './components/Header/Header';
 
 function App() {
 
   return (
     <>
-
-      <h1>e-book-online-store</h1>
-
       <BrowserRouter>
 
-        <Navigation />
+        <Header />
 
-        <main>
-          <Routes>
-            <Route path="/" element={<h1>Home Page Test</h1>} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </main>
+
+        <Routes>
+          <Route path="/" element={<h1>Home Page Test</h1>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
 
       </BrowserRouter>
 
