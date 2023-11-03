@@ -67,7 +67,7 @@ class StoreUser(AbstractUser):
     )
     email = models.EmailField(
         unique=True,
-    ),
+    )
     profile_picture = models.ImageField(
         upload_to="images",
         blank=True,
