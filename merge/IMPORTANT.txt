@@ -1,0 +1,17 @@
+This project must be merged with DemoEbooks
+
+- The phonenumberfield doesn't work currently. # Might be removed.
+
+
+# TODO
+
+- Make the project have a constant name for everyone
+- Clean all the problems between this project and the other one.
+
+
+
+# to run locally #
+
+pip install Django
+pip install psycopg2
+pip install django-phonenumber-field
