@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 
 .home {
   
@@ -26,11 +28,12 @@
   }
 
   .slogan {
+    font-family: 'Lobster', sans-serif;
     width:40%;
     margin-left:5%;
     text-align: center;
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 400;
     position: absolute;
     top:10rem;
  
