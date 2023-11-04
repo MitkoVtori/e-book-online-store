@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 import styles from './Login.module.css'
 
 
 export default function Login () {
+
+    const { onLoginSubmit } = useAuthContext();
 
     const [formValues, setFormValues] = useState({
         email: '',
@@ -16,33 +19,37 @@ export default function Login () {
         setFormValues( state => ({...state, [e.target.name]: e.target.value}))
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        console.log(formValues)
+     
+         onLoginSubmit(formValues)
+    }
+
 
     return(
        
         <div className={styles['form-container']}>
 
 
-            <div className={styles['logo']}>
-                <h2>Logo here</h2>
-            </div>
+            <form onSubmit={onSubmit} method="POST">
 
-            <form method="POST">
-
-                <p className={styles['sign-on']}>Sign on</p>
+                <p className={styles['sign-on']}>Sign in</p>
 
                 
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" value={formValues.email} onChange={changeHandler} />
+                <input type="email" name="email" value={formValues.email} onChange={changeHandler} placeholder="Your email address" />
 
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" value={formValues.password} onChange={changeHandler} />
+                <input type="password" name="password" value={formValues.password} onChange={changeHandler} placeholder="Your password" />
 
                 <Link to="/">Forgot your password?</Link>
 
-                <input type="submit" value="Sign on" />
+                <input type="submit" value="Sign in" />
 
 
-                <Link to="/">Create account</Link>
+                <Link to="/register"  className={styles['create-account']}>Create account</Link>
 
             </form>
 
