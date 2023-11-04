@@ -1,0 +1,49 @@
+
+.logo {
+    margin-bottom: 3em;
+}
+
+.sign-on {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+    font-size: 1.2em;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    margin-bottom: 5em;
+    border: 2px solid grey;
+    width:40%;
+    padding:1em 3em;
+    border-radius: 4px;
+ 
+}
+
+.form-container label {
+    font-weight: 600;
+}
+
+.form-container input {
+    margin-bottom: 1em;
+  font-size: 1.2em;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.form-container input[type="submit"] {
+    background-color: #0099aa;
+    color: white;
+    font-size: 1em;
+    padding: 0.4em;
+    margin-top: 1em;
+    
+}
