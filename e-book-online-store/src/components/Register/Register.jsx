@@ -10,12 +10,12 @@ import styles from './Register.module.css';
 
 export default function Register () {
 
-    const { onLoginSubmit } = useAuthContext();
+    const { onRegisterSubmit } = useAuthContext();
 
     const [formValues, setFormValues] = useState({
         email: '',
         password: '',
-        confirmPassword: '',
+        repassword: '',
     })
 
 
@@ -50,8 +50,8 @@ export default function Register () {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" value={formValues.password} onChange={changeHandler} placeholder="At least 6 characters"/>
 
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input type="password" name="confirmPassword" value={formValues.confirmPassword} onChange={changeHandler} placeholder="Repeat your password" />
+                <label htmlFor="repassword">Confirm Password</label>
+                <input type="password" name="repassword" value={formValues.repassword} onChange={changeHandler} placeholder="Repeat your password" />
 
                 <input type="submit" value="Sign on" />
 
