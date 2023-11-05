@@ -1,0 +1,56 @@
+footer {
+    background-color: #0e345a;
+}
+
+.footersOptions {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: white;
+    gap: 2rem;
+    padding: 2rem;
+    font-weight: 100;
+}
+
+.footersOptions h1 {
+    font-family: 'Georgia';
+    /* font-size: 3rem; */
+    font-size: 1rem;
+    padding-bottom: 3rem;
+
+}
+
+.btnSubscribe {
+    background-color: white;
+    padding: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.btnSubscribe a {
+    color: black;
+    text-decoration: none;
+
+}
+
+.emailInput {
+    height: 2rem;
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.linkFB a,
+.linkInstagram a {
+    color: white;
+    text-decoration: none;
+
+}
+
+.inputText {
+    border-color: 3px solid red;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}

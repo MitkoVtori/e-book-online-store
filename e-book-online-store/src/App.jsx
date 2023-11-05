@@ -4,6 +4,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
+import Footer from './components/Footer/Footer.jsx';
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
           </Routes>
           </AuthProvider>
         </BrowserRouter>
+
+        <Footer />
      
 
     </>
