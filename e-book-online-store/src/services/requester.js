@@ -1,4 +1,7 @@
- const host = 'http://localhost:3000';
+  const host = 'http://localhost:3000';
+
+// Deployed server for temporary testing authentication
+//  const host = 'https://panicky-undershirt-mite.cyclic.app/';
  
 
 export async function request(method, url, data) {
