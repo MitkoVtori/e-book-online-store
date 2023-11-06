@@ -3,7 +3,8 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, UserManager
 from django.core.validators import MinLengthValidator
 
-from e_books_online_store.accounts.validators import only_letters, only_nums, image_size
+from e_books_online_store import books
+from e_books_online_store.accounts.validators import only_letters, image_size
 
 
 class StoreUser(AbstractBaseUser, PermissionsMixin):
@@ -12,7 +13,6 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
 
     ADDRESS_MAX_LEN = 100
 
-    PHONE_NUM_MAX_LEN = 50
     PHONE_NUM_MIN_LEN = 10
 
     email = models.EmailField(
@@ -45,7 +45,6 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
     )
 
     phone_number = models.IntegerField(
-        max_length=PHONE_NUM_MAX_LEN,
         validators=[
             MinLengthValidator(PHONE_NUM_MIN_LEN)
         ],
@@ -53,8 +52,8 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
         null=True
     )
 
-    owned_books = models.ManyToManyField('books.Book')
-    liked_books = models.ManyToManyField('books.Book')
+    owned_books = models.ManyToManyField('books.Book', related_name='owned_by_user')
+    liked_books = models.ManyToManyField('books.Book', related_name='liked_by_user')
 
     profile_picture = models.ImageField(
         upload_to="images",

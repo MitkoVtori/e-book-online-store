@@ -87,7 +87,6 @@ class Book(models.Model):
     )
     genres = models.ManyToManyField(
         Genre,
-        null=False,
         blank=False,
     )
 
@@ -98,9 +97,9 @@ class Book(models.Model):
         if self.genres.count() < 1:
             raise ValidationError("A book must have at least one genre.")
 
-    def save(self, args, **kwargs):
+    def save(self, *args, **kwargs):
         self.validate_genre()
-        super(Book, self).save(args, **kwargs)
+        super(Book, self).save(*args, **kwargs)
 
 
 class Rating(models.Model):
@@ -120,6 +119,28 @@ class Rating(models.Model):
             MaxValueValidator(MAX_SCORE),
         )
     )
+
+
+class Review(models.Model):
+    comment_text = models.TextField(
+        max_length=300,
+        null=False,
+        blank=False
+    )
+    date_time_of_publication = models.DateTimeField(
+        auto_now_add=True
+    )
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE
+    )
+    book = models.ForeignKey(
+        Book,
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        ordering = ['-date_time_of_publication']
 
 
 class Cart(models.Model):
