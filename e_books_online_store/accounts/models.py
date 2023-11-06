@@ -7,11 +7,8 @@ from e_books_online_store.accounts.validators import only_letters, only_nums, im
 
 
 class StoreUser(AbstractBaseUser, PermissionsMixin):
-    FIRST_NAME_MIN_LEN = 2
-    FIRST_NAME_MAX_LEN = 30
-
-    LAST_NAME_MIN_LEN = 2
-    LAST_NAME_MAX_LEN = 30
+    FIRST_LAST_NAME_MIN_LEN = 2
+    FIRST_LAST_NAME_MAX_LEN = 65
 
     ADDRESS_MAX_LEN = 100
 
@@ -31,34 +28,25 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    first_name = models.CharField(
-        max_length=FIRST_NAME_MAX_LEN,
+    first_last_name = models.CharField(
+        max_length=FIRST_LAST_NAME_MAX_LEN,
         validators=(
             only_letters,
-            MinLengthValidator(FIRST_NAME_MIN_LEN),
+            MinLengthValidator(FIRST_LAST_NAME_MIN_LEN),
         ),
         null=True,
         blank=True,
     )
-    last_name = models.CharField(
-        max_length=LAST_NAME_MAX_LEN,
-        validators=(
-            only_letters,
-            MinLengthValidator(LAST_NAME_MIN_LEN),
-        ),
-        null=True,
-        blank=True,
-    )
+
     delivery_address = models.CharField(
         max_length=ADDRESS_MAX_LEN,
         null=True,
         blank=True
     )
 
-    phone_number = models.CharField( # Check phonenumberfield
+    phone_number = models.IntegerField(
         max_length=PHONE_NUM_MAX_LEN,
         validators=[
-            only_nums, # Check if "+" sign must be allowed
             MinLengthValidator(PHONE_NUM_MIN_LEN)
         ],
         blank=True,

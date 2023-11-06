@@ -3,14 +3,8 @@ from django.core.exceptions import ValidationError
 
 def only_letters(value):
     for symbol in value:
-        if not symbol.isalpha():
+        if not symbol.isalpha() and symbol != ".":
             raise ValidationError('Use only alphabetical letters!')
-
-
-def only_nums(value):
-    for symbol in value:
-        if not symbol.isdigit():
-            raise ValidationError('Use only numbers!')
 
 
 def image_size(image):
