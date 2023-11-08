@@ -1,7 +1,8 @@
 
 
 .categories-container {
-    min-height: 100vh;
+    min-height: 80vh;
+    background-color: rgb(247, 244, 242);
 }
 
 .categories-container h1 {
