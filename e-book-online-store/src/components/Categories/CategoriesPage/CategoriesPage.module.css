@@ -1,0 +1,9 @@
+
+
+.categories-container {
+    min-height: 100vh;
+}
+
+.categories-container h1 {
+   text-align: center;
+}
