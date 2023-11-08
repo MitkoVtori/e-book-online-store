@@ -1,3 +1,4 @@
+import { useBookContext } from '../../../contexts/BookContext.jsx';
 import { categoriesList as categories } from '../../../utils/constants/categoriesList.js';
 
 import styles from './CategoriesDropDown.module.css';
@@ -8,11 +9,11 @@ export default function CategoriesDropDown({
 }
 ) {
 
-    const clickHandler = (e) => {
-        console.log(e.target.textContent);
-//Тук ще се извиква метод от BookContext(когато имаме такъв), на който ще се подава като аргумент (categoryName),
-//  за да може при зареждане на CategoriesPage да направи заявка за избраната категория
+    const {onSelectCategory} = useBookContext();
 
+    const clickHandler = (e) => {
+        const selectedCategory = (e.target.textContent);
+        onSelectCategory(selectedCategory);
         mouseLeaveHandler();
     }
 
