@@ -1,16 +1,28 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import CategoriesDropDown from '../Categories/CategoriesDropDown/CategoriesDropDown';
 
-import styles from './Navigation.module.css'
+import styles from './Navigation.module.css';
+
+
 
 export default function Navigation() {
 
+    const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+    const mouseEnterHandler = () => {
+        setDropdownVisible(true)
+    }
+    const mouseLeaveHandler = () => {
+        setDropdownVisible(false)
+    }
 
     return (
         <nav>
-            <ul>
-
-                <li>
-                    <Link to="/categories">Категории</Link>
+            <ul> 
+                <li onMouseEnter={mouseEnterHandler}  onMouseLeave={mouseLeaveHandler}>
+                    <p>Категории</p>
+                    {isDropdownVisible && <CategoriesDropDown mouseLeaveHandler={mouseLeaveHandler} />} 
                 </li>
                 <li>
                     <Link to="/news">Новини</Link>
