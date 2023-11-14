@@ -7,6 +7,10 @@ import Header from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
 import Footer from './components/Footer/Footer.jsx';
 import CategoriesPage from './components/Categories/CategoriesPage/CategoriesPage.jsx';
+import SellBook from './components/SellBook/SellBook.jsx';
+import News from './components/NEWS/News.jsx';
+import Cart from './components/Cart/Cart.jsx'
+import Contacts from './components/Contacts/Contacts.jsx';
 
 
 function App() {
@@ -25,6 +29,11 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/categories" element={<CategoriesPage />} />
+              <Route path="/sell" element={<SellBook />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/contacts" element={<Contacts />} />
+
             </Routes>
             
           </BookProvider>

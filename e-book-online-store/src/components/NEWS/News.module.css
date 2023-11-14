@@ -1,0 +1,63 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.imgCover {
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+}
+
+.imgCover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(-6rem);
+}
+.title {
+  text-align: center;
+}
+.title h2 {
+  font-size: 3.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  letter-spacing: 0.5rem;
+}
+.slogan {
+  font-size: 1.5rem;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  font-weight: 600;
+  padding-bottom: 1.5rem;
+}
+.books-wrapper {
+  background-color: #dbdbdb;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.booksCard {
+  width: 20rem;
+}
+.bookImg {
+  width: 100%;
+  height: 13rem;
+  overflow: hidden;
+}
+.bookImg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bookCardInfo h3 {
+  font-size: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
