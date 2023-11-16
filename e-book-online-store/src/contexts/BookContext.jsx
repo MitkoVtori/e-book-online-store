@@ -1,11 +1,7 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-// Масив от книги за тестване 
-import { tempBooks } from '../utils/testConstants/testBooksArray.js';
-
-
+import * as bookService from '../services/bookService';
 
 export const BookContext = createContext();
 
@@ -15,12 +11,22 @@ export const BookProvider = ({
 
     const navigate = useNavigate();
 
-    const [books, setBooks] = useState(tempBooks);
+    const [books, setBooks] = useState([]);
     const [category, setCategory] = useState('');
+
+    useEffect(() => {
+        bookService.getAllBooks()
+            .then(books => {
+                setBooks(books);
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }, []);
 
     const onSelectCategory = (categoryName) => {
         setCategory(categoryName);
-        navigate('/categories');
+        navigate('/catalog');
     }
 
 
@@ -28,7 +34,7 @@ export const BookProvider = ({
        books,
        category,
        onSelectCategory,
-
+     
     }
 
     return <>
