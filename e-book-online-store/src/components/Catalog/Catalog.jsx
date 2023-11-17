@@ -8,7 +8,7 @@ import styles from './Catalog.module.css';
 
 
 
-export default function Catalog () {
+export default function Catalog() {
 
     const { category } = useBookContext();
 
@@ -16,26 +16,26 @@ export default function Catalog () {
 
 
     useEffect(() => {
-     getAllBooks()
-        .then(result => {
-            setBookList(result)
-        })
-        .catch(error => {
-            console.log(error.message)
-        })
-     }),[bookList];
- 
+        getAllBooks()
+            .then(result => {
+                setBookList(result)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }), [bookList];
+
     return (
 
         <div className={styles['catalog']}>
-        <h1>{category}</h1>
+            <h1>{category}</h1>
 
-        <div className={styles['books-container']}>
+            <div className={styles['books-container']}>
 
-      {bookList.map( book => <BookCard   key={book.title} {...book} /> )}
+                {bookList.map(book => <BookCard key={book.title} {...book} />)}
 
-       </div>
-        
+            </div>
+
         </div>
     )
 }
