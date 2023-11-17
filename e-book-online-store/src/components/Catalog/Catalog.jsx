@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useBookContext } from "../../contexts/BookContext";
 import { getAllBooks } from "../../services/bookService";
 
-import BookCard from "../Book/BookCard";
+import BookCard from "../Book/BookCard/BookCard";
 
 import styles from './Catalog.module.css';
 

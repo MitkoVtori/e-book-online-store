@@ -1,11 +1,12 @@
 
 .books-container {
     display: flex;
+    justify-content: space-around;
 }
 
 .catalog {
     min-height: 80vh;
-    background-color: rgb(247, 244, 242);
+ 
 }
 
 .catalog h1 {
