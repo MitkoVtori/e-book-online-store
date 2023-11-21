@@ -34,10 +34,3 @@ export default function BookDetails() {
 }
 
 
-// "_id": "4",
-// "author": "George R. R. Martin",
-// "description": "Nigeria",
-// "cover_image": "https://www.ciela.com/media/catalog/product/cache/332cf88b637d37883ec9cea105be873e/f/i/fire_and_blood_-_george_r.r._martin_-_9780008402785_-_harpercollins.jpg",
-// "price": 209,
-// "title": "Fire and Bloood",
-// "publication_date": 1958
