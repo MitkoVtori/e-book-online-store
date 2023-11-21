@@ -2,6 +2,7 @@
 
 export const tempBooks = [
     {
+      "_id": "1",
       "author": "George R. R. Martin",
       "description": "Nigeria",
       "cover_image": "https://www.ciela.com/media/catalog/product/cache/332cf88b637d37883ec9cea105be873e/f/i/fire_and_blood_-_george_r.r._martin_-_9780008402785_-_harpercollins.jpg",
@@ -10,6 +11,7 @@ export const tempBooks = [
       "publication_date": 1958
     },
     {
+      "_id": "2",
       "author": "George R. R. Martin",
       "description": "Denmark",
       "cover_image": "https://www.ciela.com/media/catalog/product/cache/9a7ceae8a5abbd0253425b80f9ef99a5/f/i/file_79_2.jpg",
@@ -19,6 +21,7 @@ export const tempBooks = [
       "publication_date": 1836
     },
     {
+      "_id": "3",
       "author": "Dante Alighieri",
       "description": "Italy",
       "cover_image": "https://pictures.abebooks.com/inventory/md/md30873682298.jpg",
@@ -28,11 +31,23 @@ export const tempBooks = [
       "publication_date": 1315
     },
     {
-      "author": "Dante Alighieri",
+      "_id": "4",
+      "author": "George R. R. Martin",
+      "description": "Nigeria",
+      "cover_image": "https://www.ciela.com/media/catalog/product/cache/332cf88b637d37883ec9cea105be873e/f/i/fire_and_blood_-_george_r.r._martin_-_9780008402785_-_harpercollins.jpg",
+      "price": 209,
+      "title": "Fire and Bloood",
+      "publication_date": 1958
+    },
+    {
+      "_id": "5",
+      "author": "Dante Alighierii",
       "description": "Italy",
       "cover_image": "https://pictures.abebooks.com/inventory/md/md30873682298.jpg",
       "price": 409,
       "genres": "Italian",
-      "title": "The Divine Comedy",
+      "title": "The Divine Comedyy",
       "publication_date": 1315
-    }]
+    },
+,
+  ]

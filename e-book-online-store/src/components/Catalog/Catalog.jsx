@@ -32,7 +32,7 @@ export default function Catalog() {
 
             <div className={styles['books-container']}>
 
-                {bookList.map(book => <BookCard key={book.title} {...book} />)}
+                {bookList.map(book => <BookCard key={book._id} {...book} />)}
 
             </div>
 

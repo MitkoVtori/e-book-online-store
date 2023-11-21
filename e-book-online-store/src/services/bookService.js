@@ -13,3 +13,12 @@ export const getAllBooks = async () => {
     return tempBooks;
 }
 
+export const getOneBook = async (bookId) => {
+
+    const result = tempBooks.find(book => book._id === bookId);
+
+    return result;
+
+
+}
+
