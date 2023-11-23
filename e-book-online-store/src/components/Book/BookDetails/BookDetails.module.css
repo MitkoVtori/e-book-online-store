@@ -1,0 +1,55 @@
+
+.details-container {
+    max-width: 100%;
+    margin:4rem 1rem 1rem 15%;
+    display:flex;
+    
+}
+
+.img-container {
+    width: 40%;
+    height: 40%; 
+    padding:4rem 8rem;
+    background-color: #f2f2f2;
+}
+
+.img-container img {
+    display:block;
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-container {
+    width:60%;
+    margin-left: 2rem;
+}
+
+.book-name {
+    font-size: 2.4em;
+   
+}
+
+.book-author {
+    font-size: 1.4em;
+    font-style: oblique;
+    text-decoration:underline;
+    margin-bottom: 2rem;
+}
+
+.book-price {
+    font-size: 2em;
+
+
+}
+
+
+.add-btn {
+    
+    background-color: #0f2840;
+    color:azure;
+    font-size: 1em;
+    padding:0.5em;
+ 
+
+}
