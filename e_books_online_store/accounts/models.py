@@ -1,10 +1,18 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.models import PermissionsMixin, UserManager
+from django.contrib.auth.models import PermissionsMixin, UserManager, AbstractUser
 from django.core.validators import MinLengthValidator
-
 from e_books_online_store import books
 from e_books_online_store.accounts.validators import only_letters, image_size
+from django.contrib.auth.models import Group
+from django.db import models
+from django.contrib.auth.models import Group
+from django.conf import settings
+
+class GroupMembership(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+
 
 
 class CustomUserManager(BaseUserManager):
@@ -85,8 +93,8 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
         null=True
     )
 
-    owned_books = models.ManyToManyField('books.Book', related_name='owned_by_user')
-    liked_books = models.ManyToManyField('books.Book', related_name='liked_by_user')
+    owned_books = models.ManyToManyField('books.Book', related_name='owned_by_users')
+    liked_books = models.ManyToManyField('books.Book', related_name='liked_by_users')
 
     profile_picture = models.ImageField(
         upload_to="images",
@@ -98,5 +106,4 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(auto_now_add=True)
 
     objects = CustomUserManager()
-
-
+    groups = models.ManyToManyField(Group, through=GroupMembership)

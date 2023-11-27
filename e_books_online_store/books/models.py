@@ -101,7 +101,6 @@ class Book(models.Model):
         self.validate_genre()
         super(Book, self).save(*args, **kwargs)
 
-
 class Rating(models.Model):
     MAX_SCORE = 5
 

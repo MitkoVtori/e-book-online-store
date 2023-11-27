@@ -90,7 +90,7 @@ DATABASES = {
         "NAME": "ebooks_db",
         "USER": "postgres-user",
         "PASSWORD": "password",
-        "HOST": "127.0.0.1",
+        "HOST": "db",
         "PORT": "5432",
     }
 }
@@ -136,3 +136,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.StoreUser'
