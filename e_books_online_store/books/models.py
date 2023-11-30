@@ -27,7 +27,7 @@ class Author(models.Model):
         blank=True
     )
 
-    def str(self):
+    def __str__(self):
         return self.name
 
 
@@ -39,7 +39,7 @@ class Genre(models.Model):
     null = False,
     blank = False
 
-    def str(self):
+    def __str__(self):
         return self.name
 
 
@@ -93,13 +93,9 @@ class Book(models.Model):
     def average_rating(self) -> float:
         return Rating.objects.filter(product=self).aggregate(Avg("score"))["score__avg"] or 0
 
-    def validate_genre(self):
-        if self.genres.count() < 1:
-            raise ValidationError("A book must have at least one genre.")
-
     def save(self, *args, **kwargs):
-        self.validate_genre()
         super(Book, self).save(*args, **kwargs)
+
 
 class Rating(models.Model):
     MAX_SCORE = 5

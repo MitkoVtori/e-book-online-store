@@ -32,10 +32,16 @@ class BookSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = '__all__'
+class CreateBookSerializer(BookSerializer):
+    pass
+
+
+class UpdateBookSerializer(BookSerializer):
+    pass
+
+
+class DeleteBookSerializer(BookSerializer):
+    pass
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -48,3 +54,7 @@ class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = '__all__'
+
+
+class AddToCartSerializer(CartSerializer):
+    pass
