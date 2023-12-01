@@ -25,22 +25,37 @@ export default function BookDetails() {
 
         <div  className={styles['details-container']} >
 
+        <div className={styles['right-container']} >
             <div className={styles['img-container']}>
                 <img src={book.cover_image} alt="book_cover" />
             </div>
 
+        <div className={styles['description']}>
+                  <p>{ book.description }</p>
+        </div>
+           
+
+        </div>
           
 
-            <div className={styles['info-container']}>
+            <div className={styles['left-container']}>
 
             <p className={styles['book-name']} > { book.title } </p>
             <p className={styles['book-author']}> { book.author } </p>
             <p className={styles['book-price']}> {book.price} лв. </p>
 
-
-            <div className={styles['btns-container']}>
-                    <button className={styles['add-btn']}>Add to Cart</button>
+                <div className={styles['quantity']}>
+                    <label htmlFor="quantity">Quantity</label>
+                    <input type="number" />
                 </div>
+
+
+                <div className={styles['btns-container']}>
+                    <button className={styles['add-btn']}>Add to Cart</button>
+                    <button className={styles['buy-btn']}>Buy Now</button>
+                </div>
+
+               
 
             
             </div>
@@ -51,16 +66,7 @@ export default function BookDetails() {
         </div>
 
 
-        // <>
-        // <h1> { book.title }</h1>
-        // <h2> { book.author } </h2>
-        // <img src={book.cover_image} alt="book" />
 
-        // <h3> { book.description } </h3>
-        // <h4> { book.price } </h4>
-        // <h5> { book.publication_date } </h5>
-
-        // </>
     )
 }
 

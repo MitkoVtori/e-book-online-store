@@ -1,15 +1,19 @@
 
 .details-container {
     max-width: 100%;
-    margin:4rem 1rem 1rem 15%;
+    margin:4rem 1rem 6rem 0;
     display:flex;
+    justify-content: right;
     
 }
 
-.img-container {
+.right-container {
     width: 40%;
-    height: 40%; 
-    padding:4rem 8rem;
+}
+
+.img-container {
+    width: 100%;
+   
     background-color: #f2f2f2;
 }
 
@@ -18,15 +22,23 @@
     width:100%;
     height: 100%;
     object-fit: cover;
+    border: 4rem solid  #f2f2f2;
+    border-left: 8rem solid #f2f2f2 ;
+    border-right: 8rem solid #f2f2f2 ;
 }
 
-.info-container {
-    width:60%;
+.description {
+    margin-top: 4rem;
+    font-size: 1.2em;
+}
+
+.left-container {
+    width:40%;
     margin-left: 2rem;
 }
 
 .book-name {
-    font-size: 2.4em;
+    font-size: 2em;
    
 }
 
@@ -43,13 +55,45 @@
 
 }
 
+.quantity label {
+    display:block;
+    margin-top: 1rem;
+}
 
-.add-btn {
-    
-    background-color: #0f2840;
-    color:azure;
+.quantity input[type=number] {
+    width: 6rem;
     font-size: 1em;
-    padding:0.5em;
- 
+   padding: 1rem 0.2rem 1rem 1rem;
+   border: 1px solid  #818c96;
+   color: #818c96;
+   
+}
+
+.quantity input[type=number]:focus {
+   outline: none;
+}
+
+.quantity input[type=number]::-webkit-inner-spin-button,
+.quantity input[type=number]::-webkit-outer-spin-button { 
+    height: 5rem;
+    
+}
+
+
+.btns-container {
+    margin-top: 3rem;
 
 }
+
+.btns-container button {
+    display:block;
+    width:70%;
+    background-color: #0e345a;
+    color:azure;
+    font-size: 1.4em;
+    padding:0.5em;
+    margin-bottom: 1rem;
+    cursor: pointer;
+
+}
+
