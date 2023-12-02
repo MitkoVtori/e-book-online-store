@@ -13,6 +13,7 @@ export default function Register () {
     const { onRegisterSubmit } = useAuthContext();
 
     const [formValues, setFormValues] = useState({
+        first_last_name: '',
         email: '',
         password: '',
         repassword: '',
@@ -25,10 +26,7 @@ export default function Register () {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        console.log(formValues)
-     
-         onRegisterSubmit(formValues)
+         onRegisterSubmit(formValues);
     }
 
 
@@ -41,8 +39,8 @@ export default function Register () {
 
                 <p className={styles['sign-up']}>Create account</p>
 
-                <label htmlFor="name">Your name</label>
-                <input type="text" name="username" value={formValues.username} onChange={changeHandler} placeholder="First and last name" />
+                <label htmlFor="first_last_name">Your name</label>
+                <input type="text" name="first_last_name" value={formValues.username} onChange={changeHandler} placeholder="First and last name" />
                 
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" value={formValues.email} onChange={changeHandler} placeholder="Valid email address" />

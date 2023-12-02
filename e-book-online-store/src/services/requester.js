@@ -1,4 +1,4 @@
-  const host = 'http://localhost:3000';
+  const host = 'http://127.0.0.1:8000/';
 
 // Deployed server for temporary testing authentication
 //  const host = 'https://panicky-undershirt-mite.cyclic.app/';

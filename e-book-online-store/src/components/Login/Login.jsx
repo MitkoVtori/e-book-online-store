@@ -21,9 +21,6 @@ export default function Login () {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        console.log(formValues)
-     
          onLoginSubmit(formValues)
     }
 

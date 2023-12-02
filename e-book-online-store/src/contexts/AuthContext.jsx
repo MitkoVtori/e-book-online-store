@@ -19,7 +19,6 @@ export const AuthProvider = ({
 
       const result = await userService.login(data);
       if (result) {
-        console.log(result)
         setAuth(result);
         navigate('/');
         setAuthError(null)
@@ -29,28 +28,22 @@ export const AuthProvider = ({
     }
   }
 
-  const onRegisterSubmit = async (data) => {
+  const onRegisterSubmit = async (formValues) => {
     try {
 
-      if (data.password !== data.repassword) {
+      if (formValues.password !== formValues.repassword) {
         setAuthError("Password don't match!");
-        return data
+        return formValues
       }
+
+      const {repassword, ...data} = formValues;
 
       const result = await userService.register(data);
       if (result) {
-        const userData = {
-          accessToken: result.accessToken,
-          email: result.email,
-          imageUrl: result.imageUrl,
-          phone: result.phone,
-          username: result.username,
-          _createdOn: result._createdOn,
-          _id: result._id
-        }
-        setAuth(userData);
+  
+        setAuth(result);
         navigate('/');
-        setAuthError(null)
+      
       }
     } catch (error) {
       setAuthError(error.message);
