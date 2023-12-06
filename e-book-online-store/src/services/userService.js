@@ -7,8 +7,6 @@ const endpoints = {
     "register": "api-accounts/register/",
     "logout": "api-accounts/logout/",
     "profile": "api-accounts/profile/"
- 
-
 }
 
 export async function login(data) {
@@ -40,7 +38,7 @@ export async function logout() {
 
 export async function getMyProfile() {
     try {
-      const result = get( `${endpoints.profile}12`);
+      const result = get( `${endpoints.profile}3`);
       console.log(result)
       return result
     }catch (error) {

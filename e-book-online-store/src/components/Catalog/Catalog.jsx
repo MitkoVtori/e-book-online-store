@@ -23,7 +23,7 @@ export default function Catalog() {
             .catch(error => {
                 console.log(error.message)
             })
-    }), [bookList];
+    }, []);
 
     return (
 
@@ -32,7 +32,7 @@ export default function Catalog() {
 
             <div className={styles['books-container']}>
 
-                {bookList.map(book => <BookCard key={book._id} {...book} />)}
+                {bookList.map(book => <BookCard key={book.id} {...book} />)}
 
             </div>
 

@@ -7,7 +7,10 @@
 export async function request(method, url, data) {
     const options = {
         method,
-        headers: {}
+        headers: {
+         
+        },
+        
     };
 
     if (data) {
@@ -15,11 +18,13 @@ export async function request(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
-    // const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user)
 
-    // if( user && user.accessToken !== undefined){
-    //     options.headers['X-Authorization'] = user.accessToken;
-    // }
+    if( user && user.accessToken !== undefined){
+        options.headers['X-CSRFToken'] = user.accessToken;
+        options.credentials = "include";
+    }
     try{
         const response = await fetch(host + url, options);
         if (response.status === 204) {

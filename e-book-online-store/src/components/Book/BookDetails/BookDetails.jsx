@@ -18,7 +18,7 @@ export default function BookDetails() {
     }, [])
 
 
-    console.log(book)
+ 
 
     return(
 
@@ -27,7 +27,7 @@ export default function BookDetails() {
 
         <div className={styles['right-container']} >
             <div className={styles['img-container']}>
-                <img src={book.cover_image} alt="book_cover" />
+                <img src={`book.cover_image`} alt="book_cover" />
             </div>
 
         <div className={styles['description']}>

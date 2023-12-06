@@ -6,7 +6,7 @@ import styles from './BookCard.module.css';
 
 
 export default function BookCard({
-    _id,
+    id,
     author,
     description,
     cover_image,
@@ -45,7 +45,7 @@ export default function BookCard({
 
             {isButtonsVisible && (
                 <div className={styles['btns-container']}>
-                    <Link  to={`${_id}`} className={styles['view-btn']} >Quick view</Link>
+                    <Link  to={`${id}`} className={styles['view-btn']} >Quick view</Link>
                     <button className={styles['add-btn']}>Add to Cart</button>
                 </div>
             )
