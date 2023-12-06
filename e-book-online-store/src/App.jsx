@@ -12,6 +12,7 @@ import Cart from './components/Cart/Cart.jsx'
 import Contacts from './components/Contacts/Contacts.jsx';
 import Catalog from './components/Catalog/Catalog.jsx';
 import BookDetails from './components/Book/BookDetails/BookDetails.jsx';
+import Profile from './components/Profile/Profile.jsx';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/:bookId" element={<BookDetails />} />
               <Route path="/sell" element={<SellBook />} />

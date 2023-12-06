@@ -9,7 +9,7 @@ import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Navigation() {
 
-    const { onLogout } = useAuthContext();
+    const { onLogout, isAuth, email } = useAuthContext();
 
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
@@ -37,16 +37,36 @@ export default function Navigation() {
                     <Link to="/contacts">Контакти</Link>
                 </li>
 
-                <li>
-                    <button onClick={onLogout} >Logout</button>
-                </li>
+                {isAuth && 
 
-                <li>
-                    <Link to="/login"> <i className="fa-solid fa-circle-user"></i> Log in </Link>
+                    <>
+    
+                        <li>
+                        <Link to="/profile">  <i className="fa-solid fa-circle-user"> </i>{email} </Link>
+                            
+                        </li>
+
+                        <li>
+                            <button onClick={onLogout} >Logout</button>
+                        </li>
+
+                        <li>
+                            <Link to="/cart"> <i className="fa-solid fa-cart-shopping"></i> </Link>
+                        </li>
+
+                    </>
+                
+                }
+
+         
+                {!isAuth && <li>
+                    <Link to="/login"> Log in </Link>
                 </li>
-                <li>
-                    <Link to="/cart"> <i className="fa-solid fa-cart-shopping"></i> </Link>
-                </li>
+                
+                }
+
+        
+              
 
             </ul>
         </nav>

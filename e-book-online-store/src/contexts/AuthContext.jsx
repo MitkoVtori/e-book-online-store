@@ -71,7 +71,7 @@ export const AuthProvider = ({
     phone: auth?.phone,
     email: auth?.email,
     imageUrl: auth?.imageUrl,
-    isAuth: !!auth?.accessToken,
+    isAuth: !!auth?.email,
   }
 
   return <>
