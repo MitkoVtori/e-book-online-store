@@ -1,5 +1,5 @@
-import { get, post } from "./requester.js";
 
+import { get, post } from "./requester.js";
 
 
 const endpoints = {
@@ -12,6 +12,7 @@ const endpoints = {
 export async function login(data) {
     try {
         const result = await post(endpoints.login, data);
+      
         return result
     } catch (error){
         throw error
@@ -30,7 +31,8 @@ export async function register(data) {
 
 export async function logout() {
     try {
-        post(endpoints.logout, {});
+       await post(endpoints.logout, {});
+
     }catch (error) {
         console.log(error.message)
     }
@@ -38,10 +40,11 @@ export async function logout() {
 
 export async function getMyProfile() {
     try {
-      const result = get( `${endpoints.profile}3`);
+      const result = await get( `${endpoints.profile}3/`);
       console.log(result)
       return result
     }catch (error) {
         console.log(error.message)
     }
 }
+

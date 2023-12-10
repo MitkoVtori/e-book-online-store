@@ -6,13 +6,15 @@ import { tempBooks } from "../utils/testConstants/testBooksArray.js";
 
 const endpoints = {
     "allBooks": "/api-books/",
-    "oneBook": "/api-books/book/"
+    "oneBook": "/api-books/book/",
+    "cart": "/api-books/cart/"
 }
 
 export const getAllBooks = async () => {
 
     const result = await get(endpoints.allBooks);
     result.map((book)=> {book.cover_image = encodeUrl(book.cover_image)});
+    console.log(result);
     return result;
    
     // Връщаме тестовия масив временно!!!
@@ -22,12 +24,16 @@ export const getAllBooks = async () => {
 export const getOneBook = async (bookId) => {
 
     let result = await get(`${endpoints.oneBook}${bookId}/`);
-    // const result = tempBooks.find(book => book._id === bookId);
+    result.cover_image = encodeUrl(result.cover_image);
     console.log(result)
     return result;
+}
 
+export const getCart = async (bookId) => {
 
-
+    let result = await get(`${endpoints.cart}`);
+    console.log(result)
+    return result;
 }
 
 const encodeUrl = (url) => {

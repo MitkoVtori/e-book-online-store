@@ -1,3 +1,6 @@
+import { getCookies, getCSRFToken, getSessionId} from "./cookieService";
+
+  
   const host = 'http://127.0.0.1:8000/';
 
 // Deployed server for temporary testing authentication
@@ -5,28 +8,58 @@
  
 
 export async function request(method, url, data) {
+    
+    const csrftoken = getCSRFToken();
+    const sessionid = getSessionId();
+
     const options = {
         method,
         headers: {
-         
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+            'Cookie': `sessionid=${sessionid}`
         },
+        credentials: "same-origin",
         
     };
 
+
+
+
+    // options.headers['X-CSRFToken'] = csrftoken;
+    // options.headers['Cookie'] = `sessionid=${sessionid}`;
+   
+
+
+    // console.log(document.cookie)
+
+
     if (data) {
-        options.headers['Content-type'] = 'application/json';
+        // options.headers['Content-type'] = 'application/json';
         options.body = JSON.stringify(data);
     }
 
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user)
+   
+   
 
-    if( user && user.accessToken !== undefined){
-        options.headers['X-CSRFToken'] = user.accessToken;
-        options.credentials = "include";
-    }
+    
     try{
+        
         const response = await fetch(host + url, options);
+
+        if (response.ok) {
+        
+            const cookies = response.headers.get('Set-Cookie');
+
+            
+            console.log(cookies)
+            // saveCookies(cookies);
+        
+          }
+
+
         if (response.status === 204) {
             return {}
         }
@@ -38,11 +71,13 @@ export async function request(method, url, data) {
         }
 
         if (response.status === 403) {
+           
             return {}
         }
         return result;
 
     }catch(error){
+    
        throw error
     }
 }
