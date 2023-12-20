@@ -24,7 +24,8 @@ export const getAllBooks = async () => {
 export const getOneBook = async (bookId) => {
 
     let result = await get(`${endpoints.oneBook}${bookId}/`);
-    result.cover_image = encodeUrl(result.cover_image);
+    result.cover_image = encodeUrl(result.cover_image).slice(22, result.cover_image.length);
+
     console.log(result)
     return result;
 }

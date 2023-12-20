@@ -1,4 +1,4 @@
-import { getCookies, getCSRFToken, getSessionId} from "./cookieService";
+import { getCookies, saveCookies, getCSRFToken, getSessionId} from "./cookieService";
 
   
   const host = 'http://127.0.0.1:8000/';
@@ -9,18 +9,19 @@ import { getCookies, getCSRFToken, getSessionId} from "./cookieService";
 
 export async function request(method, url, data) {
     
-    const csrftoken = getCSRFToken();
-    const sessionid = getSessionId();
+    // const csrftoken = getCSRFToken();
+    // const sessionid = getSessionId();
 
     const options = {
         method,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-            'Cookie': `sessionid=${sessionid}`
+            // 'X-CSRFToken': csrftoken,
+            // 'Cookie': `sessionid=${sessionid}`
         },
-        credentials: "same-origin",
+        credentials: 'include',
+        mode: 'cors'
         
     };
 
@@ -32,7 +33,7 @@ export async function request(method, url, data) {
    
 
 
-    // console.log(document.cookie)
+
 
 
     if (data) {
@@ -51,10 +52,8 @@ export async function request(method, url, data) {
 
         if (response.ok) {
         
-            const cookies = response.headers.get('Set-Cookie');
+         
 
-            
-            console.log(cookies)
             // saveCookies(cookies);
         
           }

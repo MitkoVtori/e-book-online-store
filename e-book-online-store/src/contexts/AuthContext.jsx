@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import * as userService from '../services/userService';
+import { saveCookies } from '../services/cookieService';
 
 export const AuthContext = createContext();
 
@@ -19,11 +20,10 @@ export const AuthProvider = ({
 
       const result = await userService.login(data);
       if (result) {
-        document.cookie = "csrftoken=Pl48NDERAG4OLaWUmJuV3gXlsk69UAWg; path=/";
-        document.cookie = "sessionid=z0b1rdhezobf77fzhv0njlp4cb8arhrr; path=/";
+    
         setAuth(result);
         navigate('/');
-        setAuthError(null)
+        setAuthError(null);
       }
     } catch (error) {
       setAuthError(error.message);
