@@ -1,4 +1,4 @@
-import { getCookies, saveCookies, getCSRFToken, getSessionId} from "./cookieService";
+
 
   
   const host = 'http://127.0.0.1:8000/';
@@ -8,9 +8,6 @@ import { getCookies, saveCookies, getCSRFToken, getSessionId} from "./cookieServ
  
 
 export async function request(method, url, data) {
-    
-    // const csrftoken = getCSRFToken();
-    // const sessionid = getSessionId();
 
     const options = {
         method,
@@ -27,14 +24,7 @@ export async function request(method, url, data) {
 
 
 
-
-    // options.headers['X-CSRFToken'] = csrftoken;
-    // options.headers['Cookie'] = `sessionid=${sessionid}`;
    
-
-
-
-
 
     if (data) {
         // options.headers['Content-type'] = 'application/json';
