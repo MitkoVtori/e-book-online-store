@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="postgres@localhost">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.49">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.51">
     <root id="1">
       <DateStyle>mdy</DateStyle>
       <Grants>1||-9223372036854775808|c|G
@@ -4242,8 +4242,7 @@ false posixrules
       <Comment>standard public schema</Comment>
       <Current>1</Current>
       <IntrospectionStateNumber>808</IntrospectionStateNumber>
-      <IntrospectionTimestamp>2023-11-22.13:40:17.890</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-11-22.11:40:18</LocalIntrospectionTimestamp>
+      <LastIntrospectionLocalTimestamp>2023-11-22.11:40:18</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>527</StateNumber>
       <OwnerName>postgres-user</OwnerName>
