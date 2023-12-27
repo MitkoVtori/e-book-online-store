@@ -1,73 +1,76 @@
-import styles from '../SellBook/SellBook.module.css'
-import { Link } from 'react-router-dom';
+import styles from "../SellBook/SellBook.module.css";
+import { Link } from "react-router-dom";
 
-export default function SellBook(){
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
 
-return(
+export default function SellBook() {
+  document.title = "Selling Page";
+
+  const { auth } = useContext(AuthContext);
+
+  let isLogdin = true;
+
+  if (auth) {
+    isLogdin = false;
+  }
+
+  return (
     <>
-    {/* When the user is not signed up */}
+      {isLogdin ? (
+        <section className={styles["selling"]}>
+          <div className={styles["imgBackground"]}>
+            <img src="images/img_Books/book2.jpg" alt="sellImg" />
+          </div>
 
-<div className={styles['wrapper']}> 
+          <div className={styles["selingText"]}>
+            <p> Продай своята книга!</p>
+          </div>
 
-  
+          <div className={styles["btnSingUp"]}>
+            <Link to="/">
+              {" "}
+              <a>Sell your book now</a>{" "}
+            </Link>
+          </div>
+        </section>
+      ) : (
+        <div className={styles["wrapper"]}>
+          <section className={styles["leftPart"]}>
+            <h1>Купи, продай и намери своята книга</h1>
+            <p className={styles["infoText"]}>
+              E-book е онлайн книжарница, в която можеш да намериш своята дълго
+              търсена книга. На нашата платформа ние продаваме както дигитални
+              книги така и любимите за всички хартиени копия
+              <div className=""></div>
+              Успяхме ли да те заинтригуваме? Какво още чакаш? Само с няколко
+              лесни стъпки и ти ще можеш да купуваш и продаваш книги.
+            </p>
 
-<section className={styles['leftPart']}>
+            <p className={styles["fee"]}>
+              Месечен абонамент <span>25 лева</span>
+            </p>
 
-<h1>Купи, продай и намери своята книга</h1>
-<p className={styles['infoText']}>E-book е онлайн книжарница, в която можеш да намериш своята дълго търсена книга. На нашата платформа ние продаваме както дигитални книги така и любимите за всички хартиени копия<div className=""></div>
-Успяхме ли да те заинтригуваме? Какво още чакаш? Само с няколко лесни стъпки и ти ще можеш да купуваш и продаваш книги.
-</p>
+            <p className={styles["trialFree"]}>
+              Регистрирай се днес и се възползвай от нашата промоция 2 месеца
+              безплатен абонамент!
+            </p>
 
-<p className={styles['fee']}>Месечен абонамент <span>25 лева</span></p>
+            <div className={styles["btnSingUp"]}>
+              <Link to="/login">
+                {" "}
+                <a>Sign up now</a>{" "}
+              </Link>
+            </div>
+          </section>
 
-<p className={styles['trialFree']}>
-Регистрирай се днес и се възползвай от нашата промоция 2 месеца безплатен абонамент!
-</p>
-
-<div className={styles['btnSingUp']}>
-    <Link to='/login'> <a>Sign up now</a> </Link>
-</div>
-
-</section>
-
-<section className={styles['rightPart']}>
-    
-    <div className={styles['img']}>
-        <img src="images/bookSell.jpeg" alt="sellImg" />
-    </div>
-
-</section>
-
-
-
-</div>
-{/* When the user is signed in  */}
-
-
-
-<section className={styles['selling']}>
-
-<div className={styles['imgBackground']}>
-        <img src="images/img_Books/book2.jpg" alt="sellImg" />
-    </div>
-
-
-<div className={styles['selingText']}>
-
-    <p> Продай своята книга!</p>
-
-</div>
-
-<div className={styles['btnSingUp']}>
-    <Link to='/'> <a>Sell your book now</a> </Link>
-</div>
-
-
-</section>
-
-
-
+          <section className={styles["rightPart"]}>
+            <div className={styles["img"]}>
+              <img src="images/bookSell.jpeg" alt="sellImg" />
+            </div>
+          </section>
+        </div>
+      )}
     </>
-)
-
+  );
 }
