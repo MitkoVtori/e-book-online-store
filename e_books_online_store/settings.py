@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'e_books_online_store.accounts',
     'e_books_online_store.books',
+    'e_books_online_store.emailSubs'
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,13 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.StoreUser'
+
+
+# Email subscription
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'projectemail@gmail.com'
+EMAIL_HOST_PASSWORD = 'email app pasword made in the google account settings'
+EMAIL_USE_TLS = True
+
