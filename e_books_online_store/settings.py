@@ -145,7 +145,7 @@ AUTH_USER_MODEL = 'accounts.StoreUser'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'projectemail@gmail.com'
-EMAIL_HOST_PASSWORD = 'email app pasword made in the google account settings'
+EMAIL_HOST_USER = 'ebooktesting2024@gmail.com'
+EMAIL_HOST_PASSWORD = 'kvkx oeka tkge hhjb'
 EMAIL_USE_TLS = True
 
