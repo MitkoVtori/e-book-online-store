@@ -81,3 +81,8 @@ a.create-account  {
     color: #0e345a;
     font-weight: 400;
 }
+
+/* Error */
+.errorMessage{
+color: red;
+}
