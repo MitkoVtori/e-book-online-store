@@ -9,38 +9,41 @@ from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication
 from .models import *
 from .serializer import *
+from rest_framework.authtoken.models import Token
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from .tasks import send_confirmation_email
 
 UserModel = get_user_model()
 
 
 class RegisterUserView(APIView):
-    permission_classes = (permissions.AllowAny,)
-
     def post(self, request):
         clean_data = request.data
         serializer = UserRegistrationSerializer(data=clean_data)
         if serializer.is_valid(raise_exception=True):
             user = serializer.create(clean_data)
+            token = Token.objects.create(user=user)
             if user:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                send_confirmation_email(clean_data['email'])
+                return Response({'token': token.key, 'user': serializer.data}, status=status.HTTP_201_CREATED)
+
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class LoginUserView(APIView):
-    # permission_classes = (permissions.AllowAny,)
-    authentication_classes = (SessionAuthentication,)
-
     def post(self, request):
         data = request.data
         assert EmailValidator(data)
         serializer = UserLoginSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             user = serializer.check_user(data)
-            login(request, user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key ,'user': serializer.data }, status=status.HTTP_200_OK)
 
 
 class LogoutUserView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     def post(self, request):
         logout(request)
         return Response(status=status.HTTP_200_OK)
@@ -50,6 +53,7 @@ class UserDetailsView(RetrieveAPIView):
     queryset = UserModel.objects.all()
     serializer_class = UserDetailsSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     lookup_field = 'pk'
 
 
@@ -57,7 +61,7 @@ class EditUserView(UpdateAPIView):
     queryset = UserModel.objects.all()
     serializer_class = UpdateUserSerializer
     permission_classes = [IsAuthenticated]
-
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     def get_object(self):
         return self.request.user
 
@@ -66,6 +70,7 @@ class DeleteUserView(DestroyAPIView):
     queryset = UserModel.objects.all()
     serializer_class = UserDetailsSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     lookup_field = 'pk'
 
 
