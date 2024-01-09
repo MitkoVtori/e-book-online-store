@@ -8,5 +8,5 @@ def only_letters(value):
 
 
 def book_image_size(image):
-    if image.file.size > 10*1024*1024:
+    if image.size > 10*1024*1024:
         raise ValidationError("Image size cannot be more than 10MB!")

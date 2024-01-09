@@ -93,8 +93,8 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
         null=True
     )
 
-    owned_books = models.ManyToManyField('books.Book', related_name='owned_by_users')
-    liked_books = models.ManyToManyField('books.Book', related_name='liked_by_users')
+    owned_books = models.ManyToManyField('books.Book', related_name='owned_by_user')
+    liked_books = models.ManyToManyField('books.Book', related_name='liked_by_user')
 
     profile_picture = models.ImageField(
         upload_to="images",
