@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11cab304-e0d3-41ce-a321-cae99286797f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/e_books_online_store/accounts/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_books_online_store/accounts/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_books_online_store/accounts/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_books_online_store/accounts/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_books_online_store/accounts/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_books_online_store/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_books_online_store/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_books_online_store/books/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_books_online_store/books/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_books_online_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_books_online_store/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9ce77912-48a3-4522-a530-fead45b30993.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9ce77912-48a3-4522-a530-fead45b30993.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_books_online_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_books_online_store/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +38,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -50,6 +47,8 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMProjectConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -58,9 +57,15 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/e_books_online_store" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.eBookOnlineStore-backEnd">
     <configuration name="eBookOnlineStore-backEnd" type="Python.DjangoServer" factoryName="Django server">
       <module name="eBookOnlineStore-backEnd" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -73,7 +78,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
-      <option name="host" value="" />
+      <option name="host" value="localhost" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -83,7 +88,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -100,6 +107,13 @@
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -123,6 +137,13 @@
       <workItem from="1700652831923" duration="1470000" />
       <workItem from="1700659222811" duration="3244000" />
       <workItem from="1700740526680" duration="3438000" />
+      <workItem from="1701790796783" duration="1115000" />
+      <workItem from="1701810602785" duration="3585000" />
+      <workItem from="1703337746379" duration="145000" />
+      <workItem from="1703337904584" duration="1396000" />
+      <workItem from="1703693057366" duration="65000" />
+      <workItem from="1703693134521" duration="36000" />
+      <workItem from="1703693199871" duration="18000" />
     </task>
     <servers />
   </component>
