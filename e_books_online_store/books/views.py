@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 
 from .models import Author
 from .permissions import SalesPermission
@@ -23,6 +24,7 @@ class CreateAuthorView(CreateAPIView):
     queryset = Author.objects.all()
     serializer_class = CreateAuthorSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def perform_create(self, serializer):
         user = self.request.user
@@ -42,6 +44,7 @@ class EditAuthorView(UpdateAPIView):
     queryset = Author.objects.all()
     serializer_class = UpdateAuthorSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     lookup_field = 'pk'
 
     def update(self, request, *args, **kwargs):
@@ -67,6 +70,7 @@ class DeleteAuthorView(DestroyAPIView):
     queryset = Author.objects.all()
     serializer_class = DeleteAuthorSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     lookup_field = 'pk'
 
     def perform_destroy(self, serializer):
@@ -85,8 +89,12 @@ class DeleteAuthorView(DestroyAPIView):
 
 class AllBooksView(APIView):
     def get(self, request, genre_name=None):
-        if genre_name:
-            books = Book.objects.filter(genre__name=genre_name)
+        if genre_name == "Newest":
+            books = Book.objects.order_by('-publication_date')[:10]
+        elif genre_name == "Best sellers":
+            books = Book.objects.order_by('-sales')[:10]
+        elif genre_name:
+            books = Book.objects.filter(genre_name)
         else:
             books = Book.objects.all()
 
@@ -97,6 +105,7 @@ class AllBooksView(APIView):
 class CreateBookView(CreateAPIView):
     serializer_class = CreateBookSerializer
     permission_classes = [IsAuthenticated, SalesPermission]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
 
 class BookDetailsView(RetrieveAPIView):
@@ -109,6 +118,7 @@ class UpdateBookView(UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = UpdateBookSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def update(self, request, *args, **kwargs):
         partial = False
@@ -134,6 +144,7 @@ class DeleteBookView(DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = DeleteBookSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     lookup_field = 'pk'
 
     def perform_destroy(self, serializer):
@@ -154,6 +165,7 @@ class DeleteBookView(DestroyAPIView):
 class CreateReviewView(APIView):
     serializer_class = ReviewSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def post(self, request, book_id):
         book = Book.objects.get(id=book_id)
@@ -174,6 +186,8 @@ class CreateReviewView(APIView):
 
 
 class DeleteReviewView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     def delete(self, request, review_id):
         review = get_object_or_404(Review, id=review_id)
 
@@ -187,7 +201,7 @@ class DeleteReviewView(APIView):
 
 class ViewCartView(APIView):
     permission_classes = [IsAuthenticated]
-
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     def get(self, request, sort_type=None):
         cart_items = Cart.objects.filter(user=request.user)
         total_items = len(cart_items)
@@ -208,6 +222,7 @@ class ViewCartView(APIView):
 
 class AddToCartView(APIView):
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def post(self, request, product_id):
         book = get_object_or_404(Book, pk=product_id)
@@ -222,6 +237,7 @@ class AddToCartView(APIView):
 
 class RemoveFromCartView(APIView):
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def post(self, request, product_id):
         cart_item = get_object_or_404(Cart, pk=product_id, user=request.user)
