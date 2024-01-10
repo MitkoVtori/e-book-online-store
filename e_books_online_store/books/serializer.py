@@ -20,11 +20,6 @@ class UpdateAuthorSerializer(AuthorSerializer):
     pass
 
 
-class GenreSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genre
-        fields = '__all__'
-
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:

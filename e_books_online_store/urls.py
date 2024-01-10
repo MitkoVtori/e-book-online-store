@@ -21,6 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-accounts/', include('e_books_online_store.accounts.urls')),
     path('api-books/', include('e_books_online_store.books.urls')),
-    path('api-email-subs/', include('e_books_online_store.emailSubs.urls'))
 
 ]

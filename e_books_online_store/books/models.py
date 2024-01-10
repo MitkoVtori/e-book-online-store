@@ -31,16 +31,6 @@ class Author(models.Model):
         return self.name
 
 
-class Genre(models.Model):
-    NAME_MAX_LEN = 20
-    name = models.CharField(
-        max_length=NAME_MAX_LEN
-    )
-    null = False,
-    blank = False
-
-    def __str__(self):
-        return self.name
 
 
 class Book(models.Model):
@@ -49,6 +39,22 @@ class Book(models.Model):
 
     DESCRIPTION_MIN_LEN = 20
     DESCRIPTION_MAX_LEN = 500
+
+    GENRE_CHOICES = [
+        ("Children's books", "Children's books"),
+        ("Family and Hobby", "Family and Hobby"),
+        ("Encyclopedias", "Encyclopedias"),
+        ("Fiction", "Fiction"),
+        ("Art", "Art"),
+        ("Economics and Business", "Economics and Business"),
+        ("History and politics", "History and politics"),
+        ("Teen", "Teen"),
+        ("Psychology and Philosophy", "Psychology and Philosophy"),
+        ("Fantasy", "Fantasy"),
+        ("Health and Beauty", "Health and Beauty"),
+        ("Personal Development", "Personal Development"),
+        ("Other", "Other")
+    ]
 
     title = models.CharField(
         max_length=BOOK_TITLE_MAX_LEN,
@@ -63,8 +69,7 @@ class Book(models.Model):
         on_delete=models.CASCADE
     )
     description = models.TextField(
-        max_length=DESCRIPTION_MAX_LEN,
-        validators=(
+        max_length=DESCRIPTION_MAX_LEN, validators=(
             MinLengthValidator(DESCRIPTION_MIN_LEN),
         ),
         null=False,
@@ -85,10 +90,16 @@ class Book(models.Model):
         null=False,
         blank=False
     )
-    genres = models.ManyToManyField(
-        Genre,
-        blank=False,
+    genres = models.CharField(
+        choices = GENRE_CHOICES,
+        default = None
     )
+
+    sales = models.PositiveIntegerField(default=0)
+
+    def book_sold(self):
+        self.sales += 1
+        self.save(update_fields = ['sales'])
 
     def average_rating(self) -> float:
         return Rating.objects.filter(product=self).aggregate(Avg("score"))["score__avg"] or 0

@@ -3,7 +3,7 @@ from e_books_online_store.books import views
 
 urlpatterns = [
     path('', views.AllBooksView.as_view(), name='all-books'),
-    path('filter/<str:genre_name>/', views.AllBooksView.as_view(), name='all-books-filtered'),
+    path('catalog/<str:genre_name>/', views.AllBooksView.as_view(), name='all-books-filtered'),
     path('author/<int:pk>/', views.AuthorDetailsView.as_view(), name='author'),
     path('create-author/', views.CreateAuthorView.as_view(), name='create-author'),
     path('delete-author/<int:pk>/', views.DeleteAuthorView.as_view(), name='delete-author'),

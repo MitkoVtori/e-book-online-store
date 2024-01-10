@@ -95,7 +95,7 @@ DATABASES = {
         "NAME": "ebooks_db",
         "USER": "postgres-user",
         "PASSWORD": "password",
-        "HOST": "db",
+        "HOST": "localhost",#db for when running with docker
         "PORT": "5432",
     }
 }
