@@ -1,0 +1,15 @@
+.boundingErr{
+    text-align: center;
+    font-size: 3rem;
+    margin: 15rem;
+}
+.boundingErr h2 {
+color: red;
+padding-bottom: 2rem;
+}
+.boundingErr button{
+font-size: 2rem;
+cursor: pointer;
+padding: 1rem;
+padding-top: 1;
+}

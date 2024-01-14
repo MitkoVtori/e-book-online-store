@@ -8,7 +8,8 @@ const endpoints = {
     "allBooks": "api-books/",
     "oneBook": "api-books/book/",
     "cart": "/api-books/cart/",
-    "businessBook": "/api-books/businessBook"
+    "businessBook": "/api-books/businessBook",
+    "addBook": "api-books/"
 }
 
 export const getAllBooks = async () => {
@@ -55,4 +56,15 @@ export const getCart = async (bookId) => {
 
 const encodeUrl = (url) => {
     return decodeURIComponent(url.replace(/^\/(https%3A)/, '$1'));
+}
+
+
+
+//// ADD Book
+
+export const addBook = async (bookData) => {
+
+    let result = await post(`${endpoints.addBook}`, bookData);
+    console.log(result)
+    return result;
 }

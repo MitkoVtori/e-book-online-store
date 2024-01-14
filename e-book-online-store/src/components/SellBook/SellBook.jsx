@@ -28,7 +28,7 @@ export default function SellBook() {
           </div>
 
           <div className={styles["btnSingUp"]}>
-            <Link to="/">
+            <Link to="/selling">
               {" "}
               <a>Sell your book now</a>{" "}
             </Link>

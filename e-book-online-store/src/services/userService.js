@@ -1,6 +1,6 @@
 
 import { get, post } from "./requester.js";
-
+import { useLocalStorage } from "../hooks/useLocalStorage.js";
 
 const endpoints = {
     "login": "api-accounts/login/",
@@ -29,12 +29,28 @@ export async function register(data) {
     }
 }
 
+// export async function logout() {
+//     try {
+//        await post(endpoints.logout, {});
+
+//     }catch (error) {
+//         console.log(error.message)
+//     }
+// }
+
 export async function logout() {
     try {
-       await post(endpoints.logout, {});
+        // Clear user-related information from local storage (example assuming you have a useLocalStorage hook)
+        const [, setLocalStorageState] = useLocalStorage("user", null);
+        setLocalStorageState(null);
 
-    }catch (error) {
-        console.log(error.message)
+        localStorage.removeItem("user");
+        // Perform the logout request (if necessary)
+        await post(endpoints.logout, {});
+
+        // Redirect or perform additional logout actions if needed
+    } catch (error) {
+        console.error("Logout error:", error);
     }
 }
 

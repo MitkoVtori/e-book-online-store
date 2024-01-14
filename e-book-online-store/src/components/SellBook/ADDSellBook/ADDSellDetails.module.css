@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+  
+  }
+  
+  
+  .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0 auto;
+    }
+    
+    .form {
+      width: 80rem;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      margin-top: 4rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .form label {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      
+    }  
+  
+    .form input,
+    .form textarea,
+    .form select {
+      display: flex;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+      resize: none;
+            
+    }
+    
+    .form fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .form legend {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+  
+      .categoryOptions {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 3rem;
+  
+      }
+      .itemOptions{
+        cursor: pointer;
+      }
+   
+  
+    .buttons{
+       display: flex;
+      justify-content: space-around;
+      
+    }
+    .form button {
+      width: 15rem;
+      padding: 10px;
+      background-color: #536354;
+      color: #fff;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+  
+    .cancelBtn{
+      color: red;
+      font-size: 2rem;
+    }
+    
+    .form .cancelBtnNo:hover {
+      background-color: rgb(229, 81, 81);
+    }
+  
+    .form .createBtnYes:hover {
+      background-color:  #63cf68;
+    }
+  
+    fieldset legend{
+      justify-content: center;
+      align-items: center;
+    }
+    legend{
+     
+      font-size: 2rem;
+    }
+  
+  fieldset{
+      display: flex;
+  
+    }
+  
+  fieldset label input{
+  cursor: pointer;
+    }
+  
+    /* modal */
+  
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 3rem;
+      border-radius: 2rem;
+      outline: none;
+      text-align: center;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+  .modal p{
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  }
+  
+  .modal .modalbTN{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .yes{
+    font-size: 2rem;
+    width: 8rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .yes:hover{
+    background-color: #63cf68;
+  }
+  
+  .no{
+    font-size: 2rem;
+    width: 8rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .no:hover{
+    background-color: rgb(229, 81, 81);
+  }
+  
+  
+  
+  
+  .price{
+      padding: 0px 15px;
+      margin-bottom: 25px;
+      width: 100%;
+      font-size: 2.5rem;
+      font-weight: normal;
+       height: 15rem
+  }
+  
+  .titleText{
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .errorMessage{
+    color: rgb(182, 41, 41);
+    font-size: 1.4rem;
+    font-weight: 700;
+    
+  }
+  
+  .serverError {
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+
+  .boundingErr{
+    text-align: center;
+    font-size: 3rem;
+    margin: 15rem;
+}
+.boundingErr h2 {
+color: red;
+padding-bottom: 2rem;
+}
+.boundingErr button{
+font-size: 2rem;
+cursor: pointer;
+padding: 1rem;
+padding-top: 1;
+}

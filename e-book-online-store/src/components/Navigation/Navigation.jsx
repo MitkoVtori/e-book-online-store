@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import CategoriesDropDown from '../Categories/CategoriesDropDown/CategoriesDropDown';
 
+// eslint-disable-next-line no-unused-vars
 import styles from './Navigation.module.css';
 import { useAuthContext } from '../../contexts/AuthContext';
 

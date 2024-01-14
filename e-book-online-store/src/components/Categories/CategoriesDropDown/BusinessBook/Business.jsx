@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
 
+import styles from "../BusinessBook/Business.module.css"
 import { useEffect, useState } from 'react';
 import * as bookService from '../../../../services/bookService'
 
-import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
+import BookCardItem from "../../../Book/BookCard/BookCardItem/BookCard"
+
+
 
 
 
@@ -12,12 +14,10 @@ export default function BusinessBooks(){
 
     const [businessBooks, setBusinessBooks] = useState([]);
    
-//   const[hasServerError, setHasServerError]= useState(false);
-//   const[serverError,setServerError]= useState({})
-    
+   
     useEffect(() => {
        
-        bookService.getAllBG()
+        bookService.getAllBusiness()
         .then(result => setBusinessBooks(result))
         .catch( error => {
             // setHasServerError(true);
@@ -28,7 +28,6 @@ export default function BusinessBooks(){
     }, 
     [])
 
-    const sortedNews = [...bgNews].sort((a, b) => new Date(b._createdOn) - new Date(a._createdOn));
     return(
         <>
 
@@ -36,22 +35,20 @@ export default function BusinessBooks(){
 <div className={styles.pageWrapper}> 
         <div className={styles.title}>
 
-        <h2>Новините от България</h2>
+        <h2>Категория Бизнес</h2>
         </div>
 
             
+       
             
-            {spining && <Spiner />}
-            {hasServerError && (
-                        <p className={styles.serverError}>Грешка! </p>
-                    )}
+   
                     
-                {bgNews.length > 0
+                {businessBooks.length > 0
                 ? (
                     <>
                     {
-                        sortedNews.map(newsCard => (
-                            <NewsCard key={newsCard._id}
+                        businessBooks.map(newsCard => (
+                            <BookCardItem key={newsCard._id}
                                 {...newsCard}
                                 />
 
@@ -63,11 +60,9 @@ export default function BusinessBooks(){
                 :
                 <div className={styles.NoNews}>
                 <div className={styles.NoNewsText}>
-                <h3>Все още нямаме новини в тази категория!</h3>
-                    <Link to="/createNews">
-                <button className={styles.NoNewsBtn}>Създай 
-                </button>
-                    </Link>
+                <h3>Все още книги в тази категория</h3>
+                    
+                
                 </div>
                 </div>
 }
