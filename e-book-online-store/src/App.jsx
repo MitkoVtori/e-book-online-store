@@ -17,8 +17,8 @@ import Profile from "./components/Profile/Profile.jsx";
 
 import NotFound from "./components/NotFound/NotFound.jsx";
 
-// import AuthGuard from "./components/GUARDS/AuthGuard.jsx";
-// import GuestGuard from "./components/GUARDS/GuestGuard.jsx";
+import AuthGuard from "./components/GUARDS/AuthGuard.jsx";
+import GuestGuard from "./components/GUARDS/GuestGuard.jsx";
 import ErrorBounding from "./components/GUARDS/ErrorBounding.jsx";
 
 
@@ -39,22 +39,26 @@ function App() {
 
                 <Route path="/catalog" element={<Catalog />} />
                 <Route path="/catalog/:bookId" element={<BookDetails />} />
-                <Route path="/sell" element={<SellBook />} />
+                
                 <Route path="/news" element={<News />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/contacts" element={<Contacts />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
+                
                 <Route path="/selling" element={<ADDSellBook />} />
-               <Route path="/profile" element={<Profile />} />
+               
                 <Route path="/catalog/bussines" element={<BussinesBook />} />
-                {/* <Route element={<AuthGuard />}>
+
+                <Route element={<AuthGuard />}>
                  
+                <Route path="/sell" element={<SellBook />} />
+                <Route path="/profile" element={<Profile />} />
+                
                 </Route>
 
                 <Route element={<GuestGuard />}>
-                
-                </Route> */}
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                </Route>
 
                 <Route path="*" element={<NotFound />}></Route>
               </Routes>

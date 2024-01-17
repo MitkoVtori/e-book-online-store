@@ -7,9 +7,9 @@
 const endpoints = {
     "allBooks": "api-books/",
     "oneBook": "api-books/book/",
-    "cart": "/api-books/cart/",
-    "businessBook": "/api-books/businessBook",
-    "addBook": "api-books/"
+    "cart": "api-books/cart/",
+    "businessBook": "api-books/businessBook",
+    "addBook": "api-books/book"
 }
 
 export const getAllBooks = async () => {
@@ -64,7 +64,7 @@ const encodeUrl = (url) => {
 
 export const addBook = async (bookData) => {
 
-    let result = await post(`${endpoints.addBook}`, bookData);
+    let result = await post(endpoints.addBook, bookData);
     console.log(result)
     return result;
 }

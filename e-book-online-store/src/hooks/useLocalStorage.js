@@ -1,5 +1,5 @@
 import { useState } from "react";
-import bcrypt from "bcryptjs"; 
+// import bcrypt from "bcryptjs"; 
 
 
 
@@ -19,17 +19,14 @@ export const useLocalStorage = (key, initialValue) => {
 
     const setLocalStorageState = async (value) => {
         try {
-         if (value && value.password) {
+         if (value) {
              
-                const hashedPassword = await bcrypt.hash(value.password, 10);
-                const hashedValue = { ...value, password: hashedPassword };
-
-                setState(hashedValue);
-                localStorage.setItem(key, JSON.stringify(hashedValue));
-            } else {
-                
-                console.error("No password property found in the value.");
-            }
+                // const hashedPassword = await bcrypt.hash(value.password, 10);
+                // const hashedValue = { ...value, password: hashedPassword };
+                const {password, ...newValue } = value
+                setState(newValue);
+                localStorage.setItem(key, JSON.stringify(newValue));
+            } 
         } catch (error) {
             
             console.error("Error hashing password:", error);

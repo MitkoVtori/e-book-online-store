@@ -29,30 +29,30 @@ export async function register(data) {
     }
 }
 
-// export async function logout() {
-//     try {
-//        await post(endpoints.logout, {});
-
-//     }catch (error) {
-//         console.log(error.message)
-//     }
-// }
-
 export async function logout() {
     try {
-        // Clear user-related information from local storage (example assuming you have a useLocalStorage hook)
-        const [, setLocalStorageState] = useLocalStorage("user", null);
-        setLocalStorageState(null);
+       await post(endpoints.logout, {});
 
-        localStorage.removeItem("user");
-        // Perform the logout request (if necessary)
-        await post(endpoints.logout, {});
-
-        // Redirect or perform additional logout actions if needed
-    } catch (error) {
-        console.error("Logout error:", error);
+    }catch (error) {
+        console.log(error.message)
     }
 }
+
+// export async function logout() {
+//     try {
+//         // Clear user-related information from local storage (example assuming you have a useLocalStorage hook)
+//         const [, setLocalStorageState] = useLocalStorage("user", null);
+//         setLocalStorageState(null);
+
+//         localStorage.removeItem("user");
+//         // Perform the logout request (if necessary)
+//         await post(endpoints.logout, {});
+
+//         // Redirect or perform additional logout actions if needed
+//     } catch (error) {
+//         console.error("Logout error:", error);
+//     }
+// }
 
 export async function getMyProfile() {
     try {

@@ -1,18 +1,19 @@
-import { useContext } from "react";
+/* eslint-disable react/prop-types */
+
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 
 
-export default function GuestGuard(){
+export default function GuestGuard({children}){
 
-    const{ isAuth } = useContext(useAuthContext);
+    const{ isAuth } = useAuthContext();
     if(isAuth) {
 
         return <Navigate to='/' />
     }
 
-    return  <Outlet />
+    return children ? children : <Outlet />;
         
     
 }
