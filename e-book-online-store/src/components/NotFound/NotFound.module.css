@@ -1,0 +1,27 @@
+
+
+.not-found-container {
+    width: 100%;
+    min-height: 25vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 50%;
+}
+
+.home-link {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.25rem 0.5rem;
+    background-color: rgb(14, 52, 90);
+    color: white;
+    font-weight: bold;
+}
