@@ -1,118 +1,99 @@
-.wrapper{
-    margin: 2rem;
-    display: flex;
+.wrapper {
+  margin: 2rem;
+  display: flex;
 }
 
-.leftPart h1{
-    font-size: 2.5rem;
-    width: 90%;
-    padding-bottom: 2rem;
-    }
-.infoText{
-    font-size: 1.2rem;
-    width: 80%;
-    padding-bottom: 2rem;
-    font-style: italic;
+.leftPart h1 {
+  font-size: 2.5rem;
+  width: 90%;
+  padding-bottom: 2rem;
+}
+.infoText {
+  font-size: 1.2rem;
+  width: 80%;
+  padding-bottom: 2rem;
+  font-style: italic;
 }
 
-.fee{
-font-size: 1.5rem;
-padding-bottom: 2rem;
-
+.fee {
+  font-size: 1.5rem;
+  padding-bottom: 2rem;
 }
-.fee span{
-    color: red;
-}
-
-.trialFree{
-    font-size: 1.5rem;
-    width: 80%;
-    padding-bottom: 2rem;
-    font-weight: bold;
+.fee span {
+  color: red;
 }
 
-.btnSingUp{
-    background-color: red;
-    padding: 0.5rem;
-    width: 20%;
-    border-radius: 5rem;
-    text-align: center;
-    
-}
-.btnSingUp a{
-    text-decoration: none;
-    list-style: none;
-    color: white;
-    text-align: center;
-    font-size: 1.2rem;
+.trialFree {
+  font-size: 1.5rem;
+  width: 80%;
+  padding-bottom: 2rem;
+  font-weight: bold;
 }
 
-.btnSingUp:hover{
-    background-color: #0000;
-    border: 2px solid red;
-
-}
-.btnSingUp a:hover{
-    color: red;
-    font-weight: bold
+.btnSingUp {
+  background-color: red;
+  border-radius: 5rem;
 }
 
-
-
-.rightPart img{
- border-radius: 1.2rem;
+.rightPart img {
+  border-radius: 1.2rem;
 }
-
-
-
 
 /* When the user is logIn */
 
-
 .selling {
-    position: relative;
-    width: auto;
-  }
-  
-  .imgBackground {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .imgBackground img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-.selingText{
-    position: absolute;
-    top: 55%; 
-    left: 7%;
+  position: relative;
+  width: auto;
+}
+
+.imgBackground {
+  position: relative;
+  overflow: hidden;
+}
+
+.imgBackground img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.selingText {
+  position: absolute;
+  top: 55%;
+  left: 7%;
 }
 
 .selingText p {
-    font-family: 'Lobster', sans-serif;
-    width:100%;
-    font-size: 78px;
-    font-weight: 400;
-
+  font-family: "Lobster", sans-serif;
+  width: 100%;
+  font-size: 78px;
+  font-weight: 400;
 }
-  
-  .btnSingUp {
-    position: absolute;
-    top: 70%; 
-    left: 20%;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-  
-  .btnSingUp a {
-    display: inline-block;
-    padding: 10px 20px;
-    color: white; 
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
- 
+
+.btnSingUp {
+  position: absolute;
+  top: 70%;
+  left: 20%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.btnSingUp a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+
+
+.testBTN {
+    border-radius: 2rem;
+    background-color: red;
+    font-weight: 0.2rem;
+    padding: 1rem;
+    width: 150px;
+    color: black;
+    
+   }

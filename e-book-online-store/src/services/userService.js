@@ -29,6 +29,12 @@ export async function register(data) {
     }
 }
 
+
+export async function update(data) {
+  
+}
+
+
 export async function logout() {
     try {
        await post(endpoints.logout, {});
