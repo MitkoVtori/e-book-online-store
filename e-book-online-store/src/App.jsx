@@ -14,6 +14,7 @@ import Contacts from "./components/Contacts/Contacts.jsx";
 import Catalog from "./components/Catalog/Catalog.jsx";
 import BookDetails from "./components/Book/BookDetails/BookDetails.jsx";
 import Profile from "./components/Profile/Profile.jsx";
+import UpdateProfile from "./components/UpdateProfile/UpdateProfile.jsx";
 
 import NotFound from "./components/NotFound/NotFound.jsx";
 
@@ -52,7 +53,7 @@ function App() {
                  
                 <Route path="/sell" element={<SellBook />} />
                 <Route path="/profile" element={<Profile />} />
-                
+                <Route path="/profile/update" element={<UpdateProfile />} />
                 </Route>
 
                 <Route element={<GuestGuard />}>

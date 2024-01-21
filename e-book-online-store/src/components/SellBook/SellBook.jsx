@@ -18,23 +18,6 @@ export default function SellBook() {
   return (
     <>
       {isLogdin ? (
-        <section className={styles["selling"]}>
-          <div className={styles["imgBackground"]}>
-            <img src="images/img_Books/book2.jpg" alt="sellImg" />
-          </div>
-
-          <div className={styles["selingText"]}>
-            <p> Продай своята книга!</p>
-          </div>
-
-          <div className={styles["btnSingUp"]}>
-            <Link to="/selling">
-              {" "}
-              <a>Sell your book now</a>{" "}
-            </Link>
-          </div>
-        </section>
-      ) : (
         <div className={styles["wrapper"]}>
           <section className={styles["leftPart"]}>
             <h1>Купи, продай и намери своята книга</h1>
@@ -55,13 +38,14 @@ export default function SellBook() {
               Регистрирай се днес и се възползвай от нашата промоция 2 месеца
               безплатен абонамент!
             </p>
-
-            <div className={styles["btnSingUp"]}>
-              <Link to="/login">
+            <p className = {styles["testBTN"]}>
+            <Link to="/profile/update">
                 {" "}
-                <a>Sign up now</a>{" "}
+                <a>Update profile</a>{" "}
               </Link>
-            </div>
+            </p>
+            
+       
           </section>
 
           <section className={styles["rightPart"]}>
@@ -70,6 +54,23 @@ export default function SellBook() {
             </div>
           </section>
         </div>
+      ) : (
+        <section className={styles["selling"]}>
+          <div className={styles["imgBackground"]}>
+            <img src="images/img_Books/book2.jpg" alt="sellImg" />
+          </div>
+
+          <div className={styles["selingText"]}>
+            <p> Продай своята книга!</p>
+          </div>
+
+          <div className={styles["btnSingUp"]}>
+            <Link to="/selling">
+              {" "}
+              <a>Sell your book now</a>{" "}
+            </Link>
+          </div>
+        </section>
       )}
     </>
   );
