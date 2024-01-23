@@ -3,12 +3,11 @@ from django.db.models import Avg
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MaxValueValidator
-
 from e_books_online_store.books.validators import only_letters, book_image_size
-
+from e_books_online_store.accounts.models import StoreSellerUser
 UserModel = get_user_model()
 
-
+'''
 class Author(models.Model):
     NAME_MIN_LEN = 2
     NAME_MAX_LEN = 20
@@ -30,7 +29,7 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-
+'''
 
 
 class Book(models.Model):
@@ -56,6 +55,8 @@ class Book(models.Model):
         ("Other", "Other")
     ]
 
+    
+    seller = models.ForeignKey(StoreSellerUser, on_delete=models.CASCADE, related_name='listed_books')
     title = models.CharField(
         max_length=BOOK_TITLE_MAX_LEN,
         validators=(
@@ -64,10 +65,13 @@ class Book(models.Model):
         null=False,
         blank=False,
     )
+    '''
     author = models.ForeignKey(
         Author,
         on_delete=models.CASCADE
     )
+    '''
+    author = models.CharField(max_length=70, null=False, blank=False)
     description = models.TextField(
         max_length=DESCRIPTION_MAX_LEN, validators=(
             MinLengthValidator(DESCRIPTION_MIN_LEN),
@@ -85,7 +89,7 @@ class Book(models.Model):
         auto_now_add=True,
     )
     cover_image = models.ImageField(
-        upload_to='books/',
+        upload_to='book_images/',
         validators=[book_image_size],
         null=False,
         blank=False
@@ -96,6 +100,8 @@ class Book(models.Model):
     )
 
     sales = models.PositiveIntegerField(default=0)
+
+    content = models.FileField(upload_to='books_pdf/', null=True, blank=False)
 
     def book_sold(self):
         self.sales += 1

@@ -1,6 +1,6 @@
 from django.contrib.auth import login, get_user_model, logout
 from django.core.validators import EmailValidator
-
+from .models import StoreSellerUser
 from rest_framework.generics import RetrieveAPIView, DestroyAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -15,6 +15,25 @@ from .tasks import send_confirmation_email
 
 UserModel = get_user_model()
 
+class CreateStoreSellerView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    def post(self, request):
+        clean_data = request.data
+        serializer = CreateStoreSellerSerializer(data=clean_data)
+        user = self.request.user
+        if serializer.is_valid(raise_exception=True):
+            store_seller_data = serializer.validated_data 
+            store_seller = StoreSellerUser.objects.create(user=user, **store_seller_data)
+
+            store_user = UserModel.objects.get(email=user)
+            store_user.can_sell = True
+            store_user.save()
+
+            return Response("Store Seller created successfully.", status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+ 
 
 class RegisterUserView(APIView):
     def post(self, request):

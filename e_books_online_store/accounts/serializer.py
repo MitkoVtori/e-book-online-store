@@ -2,9 +2,42 @@ from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-
+from .models import StoreSellerUser
 
 UserModel = get_user_model()
+
+class CreateStoreSellerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoreSellerUser
+        fields = [
+            'preffered_language',
+            'intendet_listings',
+            'address_1',
+            'address_2',
+            'city',
+            'country',
+            'postal_code',
+            'country_code',
+            'phone_number',
+            'description',
+            'listing_currencies',
+        ]
+    
+
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = UserModel
+        fields = ['email', 'password']
+
+    # PASSWORDS SHOULD BE HIDDEN, WE CAN USE WIDGETS
+    def create(self, clean_data):
+        password = clean_data.get('password')
+        user = UserModel(**clean_data)
+        user.set_password(password)
+        user.save()
+        return user
 
 
 class UserDetailsSerializer(serializers.ModelSerializer):
@@ -12,19 +45,6 @@ class UserDetailsSerializer(serializers.ModelSerializer):
         model = UserModel
         fields = ['email', 'first_last_name', 'delivery_address', 'phone_number', 'profile_picture', 'owned_books']
 
-
-class UserRegistrationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserModel
-        fields = ['email', 'password']
-
-    # PASSWORDS SHOULD BE HIDDEN, WE CAN USE WIDGETS
-    def create(self, clean_data):
-        password = clean_data.pop('password')
-        user = UserModel(**clean_data)
-        user.set_password(password)
-        user.save()
-        return user
 
 
 class UserLoginSerializer(serializers.Serializer):
@@ -69,3 +89,4 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+

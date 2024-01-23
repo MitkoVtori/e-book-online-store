@@ -1,17 +1,16 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin, UserManager, AbstractUser
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, MinValueValidator
 from e_books_online_store import books
 from e_books_online_store.accounts.validators import only_letters, image_size
 from django.contrib.auth.models import Group
 from django.db import models
-from django.contrib.auth.models import Group
 from django.conf import settings
-from django.dispatch import receiver
-from django.urls import reverse
-from django_rest_passwordreset.signals import reset_password_token_created
-from django.core.mail import send_mail, EmailMessage
+from django_countries.fields import CountryField
+from .choices import get_languages, get_currencies
+
+
 
 class GroupMembership(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -50,6 +49,7 @@ class CustomUserManager(BaseUserManager):
                 'Superuser must have is_superuser=True.'
             )
         return self._create_user(email, password, **extra_fields)
+
 
 
 class StoreUser(AbstractBaseUser, PermissionsMixin):
@@ -113,24 +113,26 @@ class StoreUser(AbstractBaseUser, PermissionsMixin):
     groups = models.ManyToManyField(Group, through=GroupMembership)
 
 
-@receiver(reset_password_token_created)
-def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+class StoreSellerUser(models.Model):
+    LANGUAGES = get_languages()
+    CURRENCIES = get_currencies()
 
-    # the below like concatinates your websites reset password url and the reset email token which will be required at a later stage
-    email_plaintext_message = "Open the link to reset your password" + " " + "{}{}".format(instance.request.build_absolute_uri("http://localhost:5173/login?popupResetPassword=true&token="), reset_password_token.key)
-    
-    """
-        this below line is the django default sending email function, 
-        takes up some parameter (title(email title), message(email body), from(email sender), to(recipient(s))
-    """
-    send_mail(
-        # title:
-        "Password Reset for {title}".format(title="E-book account"),
-        # message:
-        email_plaintext_message,
-        # from:
-        "ebooktesting2024@gmail.com",
-        # to:
-        [reset_password_token.user.email],
-        fail_silently=False,
-    )
+    user = models.OneToOneField(StoreUser, on_delete=models.CASCADE)
+#    listed_books = models.ManyToManyField('books.Book', related_name='owned_by_seller')
+
+    preffered_language = models.CharField(max_length=30, choices=LANGUAGES, null=False, blank=False)
+    intendet_listings = models.PositiveIntegerField(validators=[MinValueValidator(1)], null=False, blank=False)
+    address_1 = models.CharField(max_length=90, null=False, blank=False)
+    address_2 = models.CharField(max_length=90, null=True, blank=True)
+    city = models.CharField(max_length=90, null=False, blank=False)
+    country = CountryField()
+    postal_code =models.CharField(max_length=20, null=False, blank=False) 
+    country_code = models.CharField(max_length=10)
+    phone_number = models.CharField(max_length=15)
+    description = models.TextField(max_length=400, null=True, blank=True)
+    listing_currencies = models.CharField(max_length=50, choices=CURRENCIES, null=False, blank=False) 
+
+
+
+
+

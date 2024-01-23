@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import *
 
-
+'''
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
@@ -20,7 +20,7 @@ class UpdateAuthorSerializer(AuthorSerializer):
     pass
 
 
-
+'''
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
@@ -44,12 +44,3 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = '__all__'
 
-
-class CartSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cart
-        fields = '__all__'
-
-
-class AddToCartSerializer(CartSerializer):
-    pass
