@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    
+    'django_rest_passwordreset',
 
     'e_books_online_store.accounts',
     'e_books_online_store.books'
@@ -110,6 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "OPTIONS": {
+            "min_length": 6,
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -153,6 +156,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ebooktesting2024@gmail.com'
-EMAIL_HOST_PASSWORD = 'kvkx oeka tkge hhjb'
+EMAIL_HOST_PASSWORD = 'kvkxoekatkgehhjb'
 EMAIL_USE_TLS = True
 
