@@ -6,7 +6,8 @@ const endpoints = {
     "login": "api-accounts/login/",
     "register": "api-accounts/register/",
     "logout": "api-accounts/logout/",
-    "profile": "api-accounts/profile/"
+    "reset-password": "api-accounts/password_reset/",
+    "profile": "api-accounts/profile/",
 }
 
 export async function login(data) {
@@ -67,6 +68,26 @@ export async function getMyProfile() {
       return result
     }catch (error) {
         console.log(error.message)
+    }
+}
+
+export async function resetPasswordRequest(data) {
+    try{
+        const result = await post(endpoints["reset-password"], data);
+        console.log(result)
+        return result
+    }catch (error) {
+        throw error
+    }
+}
+
+export async function resetPassword(data) {
+    try{
+        const result = await post(`${endpoints["reset-password"]}confirm/?token=${data.token}`, data);
+        console.log(result)
+        return result
+    }catch (error) {
+        throw error
     }
 }
 

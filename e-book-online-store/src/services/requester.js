@@ -54,7 +54,8 @@ export async function request(method, url, data) {
         const result = await response.json();
       
         if (!response.ok) {
-            throw new Error(result.message);
+            const { email, password, message } = result;
+            throw new Error(message || email?.at(0) || password?.at(0) || "Неустановена грешка. Виж детайли в конзолата на браузъра.");
         }
 
         if (response.status === 403) {

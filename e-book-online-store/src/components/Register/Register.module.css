@@ -37,7 +37,7 @@
 }
 
 .form-container input {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
   font-size: 1em;
   padding: 0.2em 0.4em;
   border-color: #adb1b8 #a2a6ac #8d9096;
@@ -65,3 +65,54 @@
 .errorMessage{
     color: red;
     }
+
+
+    .fa-icon {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+    
+      .error-container .fa-icon {
+        margin-right: 10px;
+      }
+    
+      .btn-register .fa-icon {
+        font-size: 1rem;
+      }
+    
+    
+    .error-container {
+        width: 100%;
+        color: rgb(223, 17, 17);
+        font-size: 1rem;
+        font-weight: lighter;
+        padding: 0.5rem 1rem 0.5rem;
+      }
+    
+      .isValid {
+        background-color: rgb(14, 52, 90);
+        cursor: pointer;
+      }
+    
+      .isNotValid {
+        background-color: rgb(14, 52, 90, 0.5);
+        cursor: not-allowed;
+      }
+    
+      .isNotValid:hover {
+        cursor: not-allowed;
+      }
+    
+      .btn-register {
+        width: 100%;
+        color: #ffffff;
+        border: none;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-radius: 6px;
+        margin: 1rem 0;
+        text-transform: uppercase;
+        font-weight: lighter;
+        font-size: 1rem;
+      }
+    

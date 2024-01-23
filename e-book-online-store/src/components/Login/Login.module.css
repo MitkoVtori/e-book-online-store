@@ -22,7 +22,7 @@
 .form-container form {
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    height: 55vh;
     margin-bottom: 5em;
     width:40%;
     padding:1em 3em;
@@ -30,8 +30,6 @@
     border-style: solid;
     border-width: 1px;
     border-radius: 6px;
-   
- 
 }
 
 .form-container label {
@@ -86,3 +84,135 @@ a.create-account  {
 .errorMessage{
 color: red;
 }
+
+
+.fa-icon {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .error-container .fa-icon {
+    margin-right: 10px;
+  }
+
+  .btn-login .fa-icon {
+    font-size: 1rem;
+  }
+
+  .ok-message .fa-icon {
+    font-size: 1.5rem;
+    display: block;
+  }
+
+
+  .ok-message {
+    position: fixed;
+    z-index: 110;
+    left: 25%;
+    right: 25%;
+    top: 8%;
+    padding: 0.5em;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgba(14, 52, 90, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.ok-message .content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ok-delete {
+    align-self: flex-end;
+    color: white;
+    background-color: rgba(14, 52, 90, 0.75);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.ok-message {
+  -moz-animation: cssAnimation 0s ease-in 6s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation 0s ease-in 6s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 0s ease-in 6s forwards;
+  /* Opera */
+  animation: cssAnimation 0s ease-in 6s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  to {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+  }
+}
+
+.timer {
+    display: block;
+    margin: 2px 0;
+    height: 3px;
+    background-color: #ffffff;
+    animation: collapse ease-in 6s forwards;  
+}
+
+@keyframes collapse {  
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+
+.error-container {
+    width: 100%;
+    color: rgb(223, 17, 17);
+    font-size: 1rem;
+    font-weight: lighter;
+    padding: 0.5rem 1rem 0.5rem;
+  }
+
+  .isValid {
+    background-color: rgb(14, 52, 90);
+    cursor: pointer;
+  }
+
+  .isNotValid {
+    background-color: rgb(14, 52, 90, 0.5);
+    cursor: not-allowed;
+  }
+
+  .isNotValid:hover {
+    cursor: not-allowed;
+  }
+
+  .btn-login {
+    width: 100%;
+    color: #ffffff;
+    border: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 1rem;
+  }
+
+  
+  .forgot-password {
+    font-style: italic;
+    color: rgb(14, 52, 90);
+    cursor: pointer;
+  }
