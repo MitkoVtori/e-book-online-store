@@ -19,7 +19,6 @@ urlpatterns = [
     path('download_book/<int:pk>/',views.DownloadBook.as_view(),name='download-book'),
     path('review-product/<int:book_id>/', views.CreateReviewView.as_view(), name='review-product'),
     path('delete-review/<int:review_id>/', views.DeleteReviewView.as_view(), name='delete-review'),
-    path('cart/', views.ViewCartView.as_view(), name='view-cart'),
     path('add_to_cart/<int:product_id>/', views.AddToCartView.as_view(), name='add-to-cart'),
     path('remove_from_cart/<int:product_id>', views.RemoveFromCartView.as_view(), name="remove-from-cart"),
 ]

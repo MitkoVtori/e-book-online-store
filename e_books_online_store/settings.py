@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'e_books_online_store.accounts',
     'e_books_online_store.books',
     'e_books_online_store.cart',
+    'e_books_online_store.payments'
 ]
 
 MIDDLEWARE = [

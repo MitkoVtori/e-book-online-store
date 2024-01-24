@@ -11,7 +11,6 @@ from django.core.files import File
 from .permissions import SalesPermission
 from .serializer import *
 from ..accounts.models import StoreUser
-import stripe
 from rest_framework.permissions import BasePermission
 
 UserModel = get_user_model()
@@ -47,8 +46,6 @@ class DownloadBook(APIView):
             response['Content-Disposition'] = f'attachment; filename="{book.content}"'
             return response
 
-class BuyBook():
-    pass
 
 class CreateBookView(CreateAPIView):
     serializer_class = CreateBookSerializer
@@ -145,27 +142,6 @@ class DeleteReviewView(APIView):
         else:
             return Response({'detail': 'You are not authorized to delete this review'},
                             status=status.HTTP_403_FORBIDDEN)
-
-
-class ViewCartView(APIView):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
-    def get(self, request, sort_type=None):
-        cart_items = Cart.objects.filter(user=request.user)
-        total_items = len(cart_items)
-
-        if sort_type == 'quantity':
-            cart_items = cart_items.order_by(sort_type)
-        elif sort_type == 'name' or sort_type == 'price':
-            cart_items = cart_items.order_by(f'product__{sort_type}')
-
-        serializer = CartSerializer(cart_items, many=True)
-
-        data = {
-            'cart_items': serializer.data,
-            'total_items': total_items
-        }
-        return Response(data)
 
 
 class AddToCartView(APIView):
