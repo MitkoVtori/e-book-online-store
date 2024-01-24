@@ -1,0 +1,10 @@
+Django==4.2.7
+django-cors-headers==4.3.0
+django-error-report==0.2.0
+djangorestframework==3.14.0
+Pillow==10.1.0
+psycopg2-binary==2.9.6
+celery==5.3.6
+django-countries==7.5.1
+stripe==7.13.0
+python-dotenv==0.19.2
