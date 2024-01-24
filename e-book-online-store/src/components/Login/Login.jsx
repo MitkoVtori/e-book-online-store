@@ -95,7 +95,7 @@ export default function Login() {
         id="request"
         className={styles["formlog"]}
       >
-        <p className={styles["sign-on"]}>Sign in</p>
+        <p className={styles["sign-on"]}>Влизане в акаунт</p>
 
         <label htmlFor="email">Електронна поща</label>
         <input
@@ -142,9 +142,13 @@ export default function Login() {
           {!isSubmitting ? "Влизане" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
           </button> 
         {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
-        <Link to="/register" className={styles["create-account"]} onClick={clearAuthError}>
+        {/* <Link to="/register" className={styles["create-account"]} onClick={clearAuthError}>
           Създай акаунт
-        </Link>
+        </Link> */}
+
+        <span onClick={clearAuthError}>
+          Все още нямаш акаунт? <Link to="/register" >Регистрирай се!</Link>
+        </span>
       </form>
     </div>
     {openPopupResetRequest && (

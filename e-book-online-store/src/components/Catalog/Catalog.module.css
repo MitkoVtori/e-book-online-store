@@ -1,17 +1,46 @@
-
 .books-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap:2rem;
-    margin-bottom: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 4rem 0;
 }
 
 .catalog {
-    min-height: 80vh;
- 
+  min-height: 80vh;
 }
 
 .catalog h1 {
-   text-align: center;
+  text-align: center;
+  font-size: 3rem;
 }
 
+.imgCover {
+  overflow: hidden;
+  height: 300px;
+  position: relative;
+}
+
+.imgCover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(-6rem);
+}
+
+.title {
+  text-align: center;
+}
+.title h2 {
+  font-size: 3.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  letter-spacing: 0.5rem;
+}
+.slogan {
+  font-size: 1.5rem;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  font-weight: 600;
+  padding-bottom: 1.5rem;
+}

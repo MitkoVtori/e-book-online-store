@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap')
 
 /* Box sizing rules */
 *,
@@ -38,7 +39,7 @@ body {
   display: block;
   padding: 0 2rem;
   text-rendering: optimizeSpeed;
-  font: normal 16px/1.5 'helvetica', serif;
+  font: normal 16px/1.5 'Jost','helvetica', serif;
   color:#0e345a;
   min-height: 100vh;
 

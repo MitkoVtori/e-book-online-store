@@ -13,7 +13,7 @@ footer {
 }
 
 .footersOptions h1 {
-    font-family: 'Georgia';
+    /* font-family: 'Georgia'; */
     /* font-size: 3rem; */
     font-size: 1rem;
     padding-bottom: 3rem;
@@ -22,13 +22,14 @@ footer {
 
 .btnSubscribe {
     background-color: white;
-    padding: 1rem;
+    padding:  0.5rem 1rem;
     font-size: 1.3rem;
     text-align: center;
 }
 
 .btnSubscribe a {
     color: black;
+    font-weight: 400;
     text-decoration: none;
 
 }
@@ -40,6 +41,7 @@ footer {
     color: white;
     text-align: center;
     font-size: 1rem;
+    padding: 1.2rem 2.4rem;
 }
 
 .linkFB a,
@@ -51,6 +53,19 @@ footer {
 
 .inputText {
     border-color: 3px solid red;
+    
     padding-bottom: 1rem;
     padding-top: 1rem;
+}
+
+.footerAdress {
+    display: inline block;
+}
+
+.footerSector > p {
+    font-size: 18px
+}
+
+.footerSector > h1 {
+    font-size: 22px
 }
