@@ -22,7 +22,7 @@ export default function Navigation() {
     <nav>
       <ul>
         <li onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
-          <p>Категории</p>
+        <Link to="/catalog"><p>Каталог</p></Link>
           {isDropdownVisible && (
             <CategoriesDropDown mouseLeaveHandler={mouseLeaveHandler} />
           )}

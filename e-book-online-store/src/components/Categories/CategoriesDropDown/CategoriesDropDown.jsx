@@ -31,7 +31,24 @@ import { Link } from 'react-router-dom';
 import styles from './CategoriesDropDown.module.css';
 
 const categoryToLink = {
+    "най - новите": 'newest',
+    "най - продаваните": 'best-sellers',
     'бизнес': 'bussines',
+    "детски книжки": 'children',
+    'семейни': 'family',
+    "енциклопедии": 'enciclopedia',
+    "изкуство": 'art',
+    "фантастика": 'fantasy',
+    'романи': 'romans',
+    "поезия": 'poetry',
+    "психология": 'psycology',
+    "за тийнейджъри": 'teens',
+    "здраве и красота": 'health-and-beauty',
+    "пътуване": 'travel',
+    "други": 'other',
+
+    //TODO: match category names to backend!!!
+
     // Add other mappings as needed
 };
 

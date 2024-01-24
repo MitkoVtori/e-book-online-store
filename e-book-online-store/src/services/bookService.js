@@ -9,6 +9,7 @@ const endpoints = {
     "oneBook": "api-books/book/",
     "cart": "api-books/cart/",
     "businessBook": "api-books/businessBook",
+    "booksByCategory": (category) => `api-books/catalog/${category}`,
     "addBook": "api-books/book"
 }
 
@@ -30,6 +31,16 @@ export const getAllBusiness = async () => {
     return data;
 }
 // ////////////////////
+
+// Simona - get all books by category
+
+export const getAllByCategory = async (bookCategory) => {
+  
+    const result = await get(endpoints.booksByCategory(bookCategory));
+    const books = Object.values(result);
+    
+    return books;
+  }
 
 export const getOneBook = async (bookId) => {
 
