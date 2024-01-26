@@ -32,6 +32,11 @@ export async function request(method, url, data) {
     }
 
     const user = JSON.parse(localStorage.getItem('user'));
+    let token = user?.token;
+    if(token) {
+        options.headers = {...options.headers,
+            'Authorization': `Token ${token}`}
+    }
    
    
 
@@ -39,13 +44,6 @@ export async function request(method, url, data) {
     try{
         
         const response = await fetch(host + url, options);
-
-        if (response.ok) {
-        
-   
-        
-          }
-
 
         if (response.status === 204) {
             return {}
@@ -55,7 +53,8 @@ export async function request(method, url, data) {
       
         if (!response.ok) {
             const { email, password, message } = result;
-            throw new Error(message || email?.at(0) || password?.at(0) || "Неустановена грешка. Виж детайли в конзолата на браузъра.");
+            console.log(response);
+            throw new Error(message || email?.at(0) || password?.at(0) || `Грешка: "${result.statusText}". Виж детайли в конзолата на браузъра.`);
         }
 
         if (response.status === 403) {
@@ -73,4 +72,5 @@ export async function request(method, url, data) {
 export const get = request.bind(null, "GET");
 export const post = request.bind(null, "POST");
 export const put = request.bind(null, "PUT");
+export const patch = request.bind(null, "PATCH");
 export const del = request.bind(null, "DELETE");

@@ -119,7 +119,7 @@ export default function Register() {
 
   return (
     <div className={styles["form-container"]}>
-      <form onSubmit={onSubmit} method="POST">
+      <form onSubmit={onSubmit} >
         <p className={styles["sign-up"]}>Създаване на акаунт</p>
 
         <label htmlFor="first_last_name">Имена</label>

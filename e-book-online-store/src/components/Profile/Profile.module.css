@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
+
+.logo {
+  margin-bottom: 3em;
+}
+
+.sign-up {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+  /* font-family: 'Dosis', sans-serif; */
+  font-size: 1.2em;
+}
+
+.form-container>form,
+.form-container>div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5em;
+  width: 40%;
+  padding: 1em 3em;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+
+}
+
+.form-container label {
+  font-weight: 600;
+}
+
+.form-container input {
+  margin-bottom: 1em;
+  font-size: 1em;
+  padding: 0.2em 0.4em;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+}
+
+.form-container input[type="submit"] {
+  background-color: #0099aa;
+  color: white;
+  font-size: 1em;
+  padding: 0.4em;
+  margin-top: 1em;
+  cursor: pointer;
+
+
+}
+
+.form-container a {
+  color: #0099aa;
+
+}
+
+.errorMessage {
+  color: red;
+}
+
+
+.fa-icon {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.error-container .fa-icon {
+  margin-right: 10px;
+}
+
+.btn-register .fa-icon {
+  font-size: 1rem;
+}
+
+
+.error-container {
+  width: 100%;
+  color: rgb(223, 17, 17);
+  font-size: 1rem;
+  /* font-weight: lighter; */
+  padding: 0.5rem 1rem 0.5rem;
+}
+
+.isValid {
+  background-color: rgb(14, 52, 90);
+  cursor: pointer;
+}
+
+.isNotValid {
+  background-color: rgb(14, 52, 90, 0.5);
+  cursor: not-allowed;
+}
+
+.isNotValid:hover {
+  cursor: not-allowed;
+}
+
+.btn-profile {
+  width: 100%;
+  color: #ffffff;
+  border: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  font-weight: lighter;
+  font-size: 1rem;
+}
+
+.profile-picture {
+  margin: 10px;
+  display: flex;
+  position: relative;
+  min-width: 160px;
+}
+
+.profile-picture>label,
+.profile-picture>div {
+  margin: auto;
+  position: relative;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: auto;
+  border: 2px solid #393b4a;
+  padding: 2px;
+  line-height: 10rem;
+  text-align: center;
+}
+
+.profile-picture .picture-spinner {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: auto;
+  border: 2px solid #393b4a;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture-spinner .fa-icon {
+  margin: 0;
+}
+
+.profile-picture label img:hover {
+  cursor: pointer;
+}
+
+.img-delete {
+  display: block;
+  background-color: rgba(14, 52, 90, 1);
+  color: white;
+  cursor: pointer;
+  padding: 2px 6px;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 0.8rem;
+  border-radius: 20px;
+}

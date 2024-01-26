@@ -53,7 +53,7 @@ export const AuthProvider = ({
       const result = await userService.login(data);
       setIsSubmitting(false);
       if (result) {
-        setAuth(result?.user);
+        setAuth({...result?.user, "_id": result?._id, "token": result?.token });
         navigate('/');
         setAuthError(null);
       }
@@ -84,6 +84,30 @@ export const AuthProvider = ({
       setIsSubmitting(false);
     }
   }
+
+  const onGetUserProfile = async () => {
+    try {
+      const profile = await userService.getMyProfile(auth?._id);
+      clearAuthError();
+      return profile;
+    } catch (error) {
+      console.log(error)
+      setAuthError(error.message);
+    }
+  };
+
+  const onEditUserProfile = async (data) => {
+    try {
+      setIsSubmitting(true);
+      await userService.editMyProfile(auth?._id, data);
+      setIsSubmitting(false);
+      clearAuthError();
+    } catch (error) {
+      console.log(error)
+      setAuthError(error.message);
+      setIsSubmitting(false);
+    }
+  };
 
   const onResetPasswordRequestSubmit = async (email) => {
     try {
@@ -152,6 +176,8 @@ export const AuthProvider = ({
     onLoginSubmit,
     onRegisterSubmit,
     onLogout,
+    onGetUserProfile,
+    onEditUserProfile,
     clearAuthError,
     authError,
     onResetPasswordRequestSubmit,
