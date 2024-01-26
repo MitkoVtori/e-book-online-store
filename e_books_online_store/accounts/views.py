@@ -57,7 +57,7 @@ class LoginUserView(APIView):
         if serializer.is_valid(raise_exception=True):
             user = serializer.check_user(data)
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key ,'user': serializer.data }, status=status.HTTP_200_OK)
+            return Response({'token': token.key , "_id": user.pk, 'user': serializer.data }, status=status.HTTP_200_OK)
 
 
 class LogoutUserView(APIView):
