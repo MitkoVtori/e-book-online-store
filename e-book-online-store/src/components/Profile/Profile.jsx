@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationCircle, faCircleNotch, faXmarkSquare, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from "react-hook-form";
+import ChangePasswordForm from "../ResetPasswordForms/ChangePasswordForm";
 
 import styles from "./Profile.module.css";
 
@@ -14,8 +15,13 @@ export default function Profile() {
         onDeleteUserProfile,
         authError,
         clearAuthError,
+        openPopupChangePassword, 
+        setOpenPopupChangePassword,
+        resetMessage,
+        setResetMessage,
         isSubmitting
     } = useAuthContext();
+
     const [profileValues, setProfileValues] = useState({
         email: "",
         first_last_name: "",
@@ -43,6 +49,7 @@ export default function Profile() {
                 })).finally(setIsLoading(false))
         }
         clearAuthError();
+        setResetMessage("");
     }, [editMode])
 
     const detectImage = (e) => {
@@ -85,9 +92,12 @@ export default function Profile() {
     }
 
     const toggleEditMode = () => {
-        deleteImage();
-        reset();
-        setEditMode(!editMode);
+        if(!isSubmitting) {
+            deleteImage();
+            reset();
+            if(deleteView){setDeleteView(!deleteView)}
+            setEditMode(!editMode);
+        }
     }
 
     const toggleDeleteView = () => {
@@ -188,23 +198,24 @@ export default function Profile() {
                     {errors.phone_number &&
                         <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {errors.phone_number.message?.toString()}</p>
                     }
-                    {!deleteView && <div>
+                    {!deleteView 
+                    ? <div>
                         <button type="submit" disabled={!isValid || isSubmitting} className={`${styles[`btn-profile`]} ${styles[isValid ? "isValid" : "isNotValid"]}`}>
                             {!isSubmitting ? "Запази" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
                         </button>
                         <button type="button" onClick={toggleEditMode} className={`${styles["btn-profile"]} ${styles["isValid"]}`} disabled={isSubmitting}>
                             ОТКАЖИ
                         </button>
-                        {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
-                    </div>}
+                    </div>
+                        : <button type="button" onClick={onDelete} className={`${styles["btn-profile"]} ${styles["isValid"]}`} disabled={isSubmitting}>
+                            {!isSubmitting ? "Изтрий" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
+                          </button>
+                    }
+                    {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
 
                     <span >
-                        Искаш ли да изтриеш профила? <span className={styles["reply"]} onClick={toggleDeleteView}>{!deleteView ? "Да" : "Не"}</span>
+                        {!deleteView ? 'Искаш ли да изтриеш профила?' : 'Ако си променил решението си, натисни'} <span className={styles["reply"]} onClick={!deleteView ? toggleDeleteView : toggleEditMode}>{!deleteView ? "Да" : "тук"}</span>
                     </span>
-                    {deleteView && <button type="button" onClick={onDelete} className={`${styles["btn-profile"]} ${styles["isValid"]}`} disabled={isSubmitting}>
-                        {!isSubmitting ? "Изтрий" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
-                    </button>}
-                    {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
                 </form>
             </div>}
 
@@ -259,13 +270,27 @@ export default function Profile() {
                         disabled
                     />
 
+                    <p>{profileValues.owned_books}</p>
+
                     <button className={`${styles["btn-profile"]} ${styles["isValid"]}`} onClick={toggleEditMode} >
                         РЕДАКТИРАЙ
                     </button>
-                    {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
+                    <button type="button" onClick={() => { setOpenPopupChangePassword(true), clearAuthError() }} className={`${styles["btn-profile"]} ${styles["isValid"]}`} >
+                        СМЯНА НА ПАРОЛА
+                    </button>
+                    {(authError && !openPopupChangePassword) && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
                 </div>
             </div>}
-            <p>{profileValues.owned_books}</p>
+            {openPopupChangePassword && (
+                <ChangePasswordForm
+                    onCloseReset={() => { setOpenPopupChangePassword(false), clearAuthError() }}
+                />
+            )}
+            {(!authError && !!resetMessage && !isSubmitting) && <p className={styles["ok-message"]} >
+                <span className={styles["ok-delete"]} onClick={() => setResetMessage("")}><FontAwesomeIcon className={styles["fa-icon"]} icon={faXmarkSquare} /></span>
+                <span className={styles['content']}><FontAwesomeIcon className={styles["fa-icon"]} icon={faCheckCircle} /><span>{resetMessage}</span></span>
+                <span className={styles["timer"]}></span>
+            </p>}
         </>
     )
 }

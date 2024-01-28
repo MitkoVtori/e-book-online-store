@@ -134,7 +134,6 @@ color: red;
 .ok-delete {
     align-self: flex-end;
     color: white;
-    background-color: rgba(14, 52, 90, 0.75);
     border: none;
     font-size: 1rem;
     cursor: pointer;

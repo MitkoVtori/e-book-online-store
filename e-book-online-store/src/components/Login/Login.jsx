@@ -36,8 +36,8 @@ export default function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setResetMessage("");
     onLoginSubmit(formValues);
-
   };
 
   const { register, clearErrors, formState: { errors, isValid } } = useForm({ mode: "onBlur" });
@@ -141,7 +141,7 @@ export default function Login() {
         <button type="submit" disabled={!isValid || isSubmitting} className={`${styles[`btn-login`]} ${styles[isValid ? "isValid" : "isNotValid"]}`}>
           {!isSubmitting ? "Влизане" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
           </button> 
-        {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
+        {(authError && !openPopupResetRequest && !openPopupResetPassword) && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
         {/* <Link to="/register" className={styles["create-account"]} onClick={clearAuthError}>
           Създай акаунт
         </Link> */}

@@ -21,6 +21,7 @@ export const AuthProvider = ({
   const [, setLocalStorageState] = useLocalStorage("user", null);
   const [openPopupResetRequest, setOpenPopupResetRequest] = useState(false);
   const [openPopupResetPassword, setOpenPopupResetPassword] = useState(false);
+  const [openPopupChangePassword, setOpenPopupChangePassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchParams] = useSearchParams();
   const [resetMessage, setResetMessage] = useState("");
@@ -153,6 +154,20 @@ export const AuthProvider = ({
     }
   };
 
+  const onChangePasswordSubmit = async (old_password, password, password2) => {
+    try {
+      setIsSubmitting(true);
+      await userService.changePassword({old_password, password, password2}, auth?._id);
+      setIsSubmitting(false);
+      clearAuthError();
+      setOpenPopupChangePassword(false);
+      setResetMessage("Паролата е успешно променена.")
+    } catch (error) {
+      setIsSubmitting(false);
+      setAuthError(error.message);
+    }
+  };
+
   // const onLogout = async () => {
   //   await userService.logout();
   //   setAuth({});
@@ -197,10 +212,13 @@ export const AuthProvider = ({
     authError,
     onResetPasswordRequestSubmit,
     onResetPasswordSubmit,
+    onChangePasswordSubmit,
     openPopupResetRequest, 
     setOpenPopupResetRequest,
     openPopupResetPassword, 
     setOpenPopupResetPassword,
+    openPopupChangePassword, 
+    setOpenPopupChangePassword,
     resetMessage,
     setResetMessage,
     searchParams,

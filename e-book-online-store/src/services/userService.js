@@ -124,3 +124,13 @@ export async function resetPassword(data) {
     }
 }
 
+export async function changePassword(data, id) {
+    try{
+        const result = await patch( `${endpoints.profile}${id}/change-password/`, data);
+        console.log(result)
+        return result
+    }catch (error) {
+        throw error
+    }
+}
+

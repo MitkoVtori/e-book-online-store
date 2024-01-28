@@ -5,22 +5,22 @@ import { useForm } from "react-hook-form";
 import { useAuthContext } from "../../contexts/AuthContext";
 import styles from "./ResetPasswordForms.module.css";
 
-const ResetPasswordForm = ({ onCloseReset }) => {
+const ChangePasswordForm = ({ onCloseReset }) => {
   const [formValues, setFormValues] = useState({
+    old_password: "",
     password: "",
-    confirmPassword: "",
+    password2: "",
   });
   const { 
     authError, 
-    onResetPasswordSubmit,
-    searchParams,
+    onChangePasswordSubmit,
     isSubmitting } = useAuthContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formValues.password === formValues.confirmPassword) {
-      const token = searchParams.get("token") || "";
-      onResetPasswordSubmit(token, formValues.password);
+    const {old_password, password, password2} = formValues;
+    if (password === password2) {
+      onChangePasswordSubmit(old_password, password, password2);
     }
   };
 
@@ -44,13 +44,33 @@ const ResetPasswordForm = ({ onCloseReset }) => {
         autoComplete="off"
         autoCorrect="off"
           type="password"
+          {...register("old_password", {
+            required: "Паролата е задължителна",
+            minLength: { value: 6, message: "Паролата трябва да бъде минимум 6 символа!" },
+            onChange(e) {
+              setFormValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+            },
+          })}
+          value={formValues.old_password}
+          placeholder="Стара парола"
+        />
+        </li>
+        {errors.old_password &&
+          <li className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {errors.old_password.message?.toString()}</li>
+        }
+        <li className={styles["input-item"]}>
+        <input
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+          type="password"
           {...register("password", {
             required: "Паролата е задължителна",
             minLength: { value: 6, message: "Паролата трябва да бъде минимум 6 символа!" },
             onChange(e) {
               setFormValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-              if (watch("confirmPassword") !== "") {
-                trigger("confirmPassword")
+              if (watch("password2") !== "") {
+                trigger("password2")
               }
             },
           })}
@@ -67,8 +87,8 @@ const ResetPasswordForm = ({ onCloseReset }) => {
         autoComplete="off"
         autoCorrect="off"
           type="password"
-          {...register("confirmPassword", {
-            required: "Повторението на паролата е задължително",
+          {...register("password2", {
+            required: "Повторението на новата парола е задължително",
             validate: {
               assertPasswords: (value) => {
                 if (value !== "" && value !== watch("password"))
@@ -79,12 +99,12 @@ const ResetPasswordForm = ({ onCloseReset }) => {
               setFormValues((state) => ({ ...state, [e.target.name]: e.target.value }));
             },
           })}
-          value={formValues.confirmPassword}
+          value={formValues.password2}
           placeholder="Повтори новата парола"
         />
         </li>
-        {errors.confirmPassword &&
-          <li className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {errors.confirmPassword.message?.toString()}</li>
+        {errors.password2 &&
+          <li className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {errors.password2.message?.toString()}</li>
         }
       </ul>
       <button type="submit" disabled={!isValid || isSubmitting} className={`${styles[`btn-reset`]} ${styles[isValid ? "isValid" : "isNotValid"]}`}>
@@ -97,4 +117,4 @@ const ResetPasswordForm = ({ onCloseReset }) => {
   );
 };
 
-export default ResetPasswordForm;
+export default ChangePasswordForm;

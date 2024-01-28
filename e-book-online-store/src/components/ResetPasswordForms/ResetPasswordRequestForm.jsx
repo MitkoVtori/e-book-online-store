@@ -32,7 +32,7 @@ const ResetPasswordRequestForm = ({ onCloseReset }) => {
     <>
       <div className={styles['resetRequestForm-container']}>
       <form className={styles["resetRequestForm"]} onSubmit={handleSubmit}>
-      <button type="button" className={styles["btn-close"]} onClick={onCloseReset}>
+      <button type="button" className={styles["btn-close"]} disabled={isSubmitting} onClick={onCloseReset}>
       <FontAwesomeIcon className={styles["fa-icon"]} icon={faXmarkSquare} />
       </button>
         <ul className={styles["inputs-list"]} role="list">
