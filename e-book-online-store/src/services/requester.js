@@ -7,12 +7,12 @@
 //  const host = 'https://panicky-undershirt-mite.cyclic.app/';
  
 
-export async function request(method, url, data) {
+export async function request(method, url, data, headers) {
 
     const options = {
         method,
         headers: {
-            'Accept': 'application/json',
+            //'Accept': 'application/json',
             'Content-Type': 'application/json',
             // 'X-CSRFToken': csrftoken,
             // 'Cookie': `sessionid=${sessionid}`
@@ -27,7 +27,9 @@ export async function request(method, url, data) {
    
 
     if (data) {
-        // options.headers['Content-type'] = 'application/json';
+        if(headers){
+            options.headers['Content-Type'] = headers['Content-Type'];
+        }
         options.body = JSON.stringify(data);
     }
 
@@ -52,9 +54,10 @@ export async function request(method, url, data) {
         const result = await response.json();
       
         if (!response.ok) {
-            const { email, password, message } = result;
+            const { email, password, detail, message } = result;
             console.log(response);
-            throw new Error(message || email?.at(0) || password?.at(0) || `Грешка: "${result.statusText}". Виж детайли в конзолата на браузъра.`);
+            console.log(result);
+            throw new Error(message || email?.at(0) || password?.at(0) || detail || `Грешка: "${response.statusText}". Виж детайли в конзолата на браузъра.`);
         }
 
         if (response.status === 403) {

@@ -28,20 +28,16 @@ export const AuthProvider = ({
 
   const onLogout = async () => {
     try {
-    
+      await userServiceLogout();  
       setLocalStorageState(null);
       localStorage.removeItem("user");
-
-    
-      await userServiceLogout();
-
-      
       setAuth({});
-
+      setAuthError(null);
       await new Promise(resolve => setTimeout(resolve, 0));
         navigate('/news');
     } catch (error) {
-      console.error("Logout error:", error);
+      setAuthError(error.message);
+      setIsSubmitting(false);
     }
   };
 
@@ -71,12 +67,12 @@ export const AuthProvider = ({
         return formValues
       }
 
-      const {repassword, ...data} = formValues;
+      const {confirmPassword, ...data} = formValues;
       setIsSubmitting(true);
       const result = await userService.register(data);
       setIsSubmitting(false);
       if (result) {
-        setAuth(result?.user);
+        setAuth({...result?.user, "_id": result?._id, "token": result?.token });
         navigate('/');
       }
     } catch (error) {
@@ -102,6 +98,24 @@ export const AuthProvider = ({
       await userService.editMyProfile(auth?._id, data);
       setIsSubmitting(false);
       clearAuthError();
+    } catch (error) {
+      console.log(error)
+      setAuthError(error.message);
+      setIsSubmitting(false);
+    }
+  };
+
+  const onDeleteUserProfile = async () => {
+    try {
+      setIsSubmitting(true);
+      await userService.deleteMyProfile(auth?._id)
+      setIsSubmitting(false);
+      clearAuthError();
+      setLocalStorageState(null);
+      localStorage.removeItem("user");
+      setAuth({});
+      await new Promise(resolve => setTimeout(resolve, 0));
+        navigate('/news');
     } catch (error) {
       console.log(error)
       setAuthError(error.message);
@@ -178,6 +192,7 @@ export const AuthProvider = ({
     onLogout,
     onGetUserProfile,
     onEditUserProfile,
+    onDeleteUserProfile,
     clearAuthError,
     authError,
     onResetPasswordRequestSubmit,

@@ -11,6 +11,7 @@ export default function Profile() {
     const {
         onGetUserProfile,
         onEditUserProfile,
+        onDeleteUserProfile,
         authError,
         clearAuthError,
         isSubmitting
@@ -28,6 +29,7 @@ export default function Profile() {
     const [image, setImage] = useState("");
     const [editMode, setEditMode] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [deleteView, setDeleteView] = useState(false);
 
     useEffect(() => {
         if (!editMode) {
@@ -40,6 +42,7 @@ export default function Profile() {
                     profile_picture: profile?.profile_picture || "",
                 })).finally(setIsLoading(false))
         }
+        clearAuthError();
     }, [editMode])
 
     const detectImage = (e) => {
@@ -64,11 +67,10 @@ export default function Profile() {
         e.preventDefault();
         if (image) setIsLoading(true);
         await onEditUserProfile(
-                { ...profileValues, profile_picture: image }
+                { ...profileValues, profile_picture: image ? image : profileValues.profile_picture }
             )
         setIsLoading(false);
         toggleEditMode();
-
     };
 
     const { register, reset, clearErrors, formState: { errors, isValid } } = useForm({ mode: "onBlur" });
@@ -77,11 +79,22 @@ export default function Profile() {
         isValid ? clearErrors() : null;
     }, [isValid])
 
+    const onDelete = (e) => {
+        e.preventDefault();
+        onDeleteUserProfile();
+    }
+
     const toggleEditMode = () => {
         deleteImage();
         reset();
         setEditMode(!editMode);
-        clearAuthError();
+    }
+
+    const toggleDeleteView = () => {
+        if(!isSubmitting){
+            clearAuthError();
+            setDeleteView(!deleteView);
+        }           
     }
 
     return (
@@ -164,7 +177,6 @@ export default function Profile() {
                     <input
                         type="text"
                         {...register("phone_number", {
-                            required: "Посочването на телефонен номер е задължително.",
                             minLength: { value: 10, message: "Посоченият телефонен номер трябва да бъде минимум 10 символа!" },
                             onChange(e) {
                                 setProfileValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -176,13 +188,22 @@ export default function Profile() {
                     {errors.phone_number &&
                         <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {errors.phone_number.message?.toString()}</p>
                     }
+                    {!deleteView && <div>
+                        <button type="submit" disabled={!isValid || isSubmitting} className={`${styles[`btn-profile`]} ${styles[isValid ? "isValid" : "isNotValid"]}`}>
+                            {!isSubmitting ? "Запази" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
+                        </button>
+                        <button type="button" onClick={toggleEditMode} className={`${styles["btn-profile"]} ${styles["isValid"]}`} disabled={isSubmitting}>
+                            ОТКАЖИ
+                        </button>
+                        {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
+                    </div>}
 
-                    <button type="submit" disabled={!isValid || isSubmitting} className={`${styles[`btn-profile`]} ${styles[isValid ? "isValid" : "isNotValid"]}`}>
-                        {!isSubmitting ? "Запази" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
-                    </button>
-                    <button type="button" onClick={toggleEditMode} className={`${styles["btn-profile"]} ${styles["isValid"]}`} disabled={isSubmitting}>
-                        ОТКАЖИ
-                    </button>
+                    <span >
+                        Искаш ли да изтриеш профила? <span className={styles["reply"]} onClick={toggleDeleteView}>{!deleteView ? "Да" : "Не"}</span>
+                    </span>
+                    {deleteView && <button type="button" onClick={onDelete} className={`${styles["btn-profile"]} ${styles["isValid"]}`} disabled={isSubmitting}>
+                        {!isSubmitting ? "Изтрий" : <FontAwesomeIcon className={styles["fa-icon"]} icon={faCircleNotch} spin />}
+                    </button>}
                     {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
                 </form>
             </div>}
@@ -241,6 +262,7 @@ export default function Profile() {
                     <button className={`${styles["btn-profile"]} ${styles["isValid"]}`} onClick={toggleEditMode} >
                         РЕДАКТИРАЙ
                     </button>
+                    {authError && <p className={styles["error-container"]}><FontAwesomeIcon className={styles["fa-icon"]} icon={faExclamationCircle} /> {authError}</p>}
                 </div>
             </div>}
             <p>{profileValues.owned_books}</p>

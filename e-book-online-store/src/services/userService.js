@@ -1,5 +1,5 @@
 
-import { get, put, post } from "./requester.js";
+import { get, del, post, patch } from "./requester.js";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
 
 const endpoints = {
@@ -41,7 +41,7 @@ export async function logout() {
        await post(endpoints.logout, {});
 
     }catch (error) {
-        console.log(error.message)
+        throw error
     }
 }
 
@@ -67,7 +67,7 @@ export async function getMyProfile(id) {
       console.log(result)
       return result
     }catch (error) {
-        console.log(error.message)
+        throw error
     }
 }
 
@@ -84,17 +84,25 @@ export async function editMyProfile(id, data) {
       formData.append("delivery_address", delivery_address);
       formData.append("phone_number", phone_number);
       formData.append("profile_picture", profile_picture);
-      const result = await put( `${endpoints.profile}${id}/edit/`, formData, {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }});
+      const result = await patch( `${endpoints.profile}${id}/edit/`, formData, {
+          'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+        });
       console.log(result)
       return result
     }catch (error) {
-        console.log(error.message)
+        throw error
     }
 }
 
+export async function deleteMyProfile(id) {
+    try {
+      const result = await del(`${endpoints.profile}${id}/delete/`);
+      console.log(result)
+      return result
+    }catch (error) {
+        throw error
+    }
+}
 
 export async function resetPasswordRequest(data) {
     try{

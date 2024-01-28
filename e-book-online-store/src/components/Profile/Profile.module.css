@@ -174,3 +174,8 @@
   font-size: 0.8rem;
   border-radius: 20px;
 }
+
+.reply {
+  cursor: pointer;
+  color: #0099aa;
+}
