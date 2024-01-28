@@ -96,4 +96,5 @@ class DeleteUserView(DestroyAPIView):
 class ChangePasswordView(UpdateAPIView):
     queryset = UserModel.objects.all()
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     serializer_class = ChangePasswordSerializer
