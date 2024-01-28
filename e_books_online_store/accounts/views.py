@@ -44,7 +44,7 @@ class RegisterUserView(APIView):
             token = Token.objects.create(user=user)
             if user:
                 send_confirmation_email(clean_data['email'])
-                return Response({'token': token.key, 'user': serializer.data}, status=status.HTTP_201_CREATED)
+                return Response({'token': token.key, "_id": user.pk, 'user': serializer.data}, status=status.HTTP_201_CREATED)
 
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
