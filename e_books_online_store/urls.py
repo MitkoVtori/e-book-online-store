@@ -22,5 +22,6 @@ urlpatterns = [
     path('api-accounts/', include('e_books_online_store.accounts.urls')),
     path('api-books/', include('e_books_online_store.books.urls')),
     path('api-cart/', include('e_books_online_store.cart.urls')),
+    path('api-payments/', include('e_books_online_store.payments.urls'))
 
 ]

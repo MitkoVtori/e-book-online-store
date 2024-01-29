@@ -118,7 +118,7 @@ class StoreSellerUser(models.Model):
     CURRENCIES = get_currencies()
 
     user = models.OneToOneField(StoreUser, on_delete=models.CASCADE)
-#    listed_books = models.ManyToManyField('books.Book', related_name='owned_by_seller')
+    stripe_id = models.CharField(max_length=200, null=False, blank=False)
 
     preffered_language = models.CharField(max_length=30, choices=LANGUAGES, null=False, blank=False)
     intendet_listings = models.PositiveIntegerField(validators=[MinValueValidator(1)], null=False, blank=False)

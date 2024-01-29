@@ -175,5 +175,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ebooktesting2024@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
-STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+# Stripe config
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+HOOKS_SECRET = os.environ.get('HOOKS_SECRET')
+
+
+

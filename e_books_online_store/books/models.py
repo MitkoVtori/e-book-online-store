@@ -7,31 +7,6 @@ from e_books_online_store.books.validators import only_letters, book_image_size
 from e_books_online_store.accounts.models import StoreSellerUser
 UserModel = get_user_model()
 
-'''
-class Author(models.Model):
-    NAME_MIN_LEN = 2
-    NAME_MAX_LEN = 20
-
-    name = models.CharField(
-        max_length=NAME_MAX_LEN,
-        validators=(
-            only_letters,
-            MinLengthValidator(NAME_MIN_LEN)
-        ),
-        null=False,
-        blank=False
-    )
-    biography = models.TextField(
-        null=True,
-        blank=True
-    )
-
-    def __str__(self):
-        return self.name
-
-'''
-
-
 class Book(models.Model):
     BOOK_TITLE_MIN_LEN = 2
     BOOK_TITLE_MAX_LEN = 50
@@ -65,12 +40,7 @@ class Book(models.Model):
         null=False,
         blank=False,
     )
-    '''
-    author = models.ForeignKey(
-        Author,
-        on_delete=models.CASCADE
-    )
-    '''
+
     author = models.CharField(max_length=70, null=False, blank=False)
     description = models.TextField(
         max_length=DESCRIPTION_MAX_LEN, validators=(
