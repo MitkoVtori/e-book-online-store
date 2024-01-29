@@ -44,7 +44,7 @@ class RegisterUserView(APIView):
             token = Token.objects.create(user=user)
             if user:
                 send_confirmation_email(clean_data['email'])
-                return Response({'token': token.key, 'user': serializer.data}, status=status.HTTP_201_CREATED)
+                return Response({'token': token.key, "_id": user.pk, 'user': serializer.data}, status=status.HTTP_201_CREATED)
 
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -57,7 +57,7 @@ class LoginUserView(APIView):
         if serializer.is_valid(raise_exception=True):
             user = serializer.check_user(data)
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key ,'user': serializer.data }, status=status.HTTP_200_OK)
+            return Response({'token': token.key , "_id": user.pk, 'user': serializer.data }, status=status.HTTP_200_OK)
 
 
 class LogoutUserView(APIView):
@@ -65,7 +65,7 @@ class LogoutUserView(APIView):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     def post(self, request):
         logout(request)
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class UserDetailsView(RetrieveAPIView):
@@ -96,4 +96,5 @@ class DeleteUserView(DestroyAPIView):
 class ChangePasswordView(UpdateAPIView):
     queryset = UserModel.objects.all()
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
     serializer_class = ChangePasswordSerializer
